@@ -1,0 +1,257 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+    --radius: 0.5rem;
+    --font-mono: "JetBrains Mono", monospace; /* Added for font-mono */
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Code-inspired font styles */
+.font-mono {
+  font-family: var(--font-mono), "JetBrains Mono", monospace;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Terminal-inspired styles */
+.terminal {
+  @apply bg-gray-900 border border-gray-700 rounded-lg p-4 font-mono text-sm;
+}
+
+.terminal-header {
+  @apply flex items-center gap-2 mb-2;
+}
+
+.terminal-dot {
+  @apply w-3 h-3 rounded-full;
+}
+
+/* Code highlighting */
+.code-highlight {
+  @apply text-cyan-400;
+}
+
+.code-comment {
+  @apply text-gray-500;
+}
+
+.code-string {
+  @apply text-green-400;
+}
+
+.code-keyword {
+  @apply text-purple-400;
+}
+
+/* Animated elements */
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+.delay-700 {
+  animation-delay: 0.7s;
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+/* Glowing effects */
+.glow {
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3), 0 0 30px rgba(0, 255, 255, 0.1);
+}
+
+.glow-text {
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5), 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+/* Card styles */
+.card-tech {
+  @apply bg-gray-800/50 backdrop-blur-md border border-gray-700 rounded-lg transition-all hover:border-gray-600 hover:shadow-[0_0_15px_rgba(0,255,255,0.15)];
+}
+
+/* Button styles */
+.btn-tech {
+  @apply bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-mono px-6 py-3 rounded-md transition-all;
+}
+
+/* Grid background */
+.bg-grid-pattern {
+  background-image: linear-gradient(to right, rgba(55, 65, 81, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(55, 65, 81, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Pattern background */
+.bg-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Hexagon pattern background */
+.bg-hexagon-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15L30 0z' fill-opacity='0.2' fill='%2322d3ee' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-size: 60px 60px;
+}
+
+/* GitHub-style contribution grid */
+.grid-cols-52 {
+  grid-template-columns: repeat(52, minmax(0, 1fr));
+}
+
+.grid-rows-7 {
+  grid-template-rows: repeat(7, minmax(0, 1fr));
+}
+
+/* Dark mode overrides */
+.dark .prose {
+  --tw-prose-body: theme("colors.gray.300");
+  --tw-prose-headings: theme("colors.white");
+  --tw-prose-lead: theme("colors.gray.300");
+  --tw-prose-links: theme("colors.cyan.400");
+  --tw-prose-bold: theme("colors.white");
+  --tw-prose-counters: theme("colors.gray.400");
+  --tw-prose-bullets: theme("colors.gray.400");
+  --tw-prose-hr: theme("colors.gray.700");
+  --tw-prose-quotes: theme("colors.gray.300");
+  --tw-prose-quote-borders: theme("colors.gray.700");
+  --tw-prose-captions: theme("colors.gray.400");
+  --tw-prose-code: theme("colors.cyan.400");
+  --tw-prose-pre-code: theme("colors.gray.300");
+  --tw-prose-pre-bg: theme("colors.gray.800");
+  --tw-prose-th-borders: theme("colors.gray.700");
+  --tw-prose-td-borders: theme("colors.gray.700");
+}
+
+.prose {
+  max-width: 65ch;
+}
+
+.prose h2 {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.prose ul {
+  margin-left: 1.5em;
+}
+
+.prose ul li {
+  margin-bottom: 0.5em;
+}
+
+/* Floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delay-1 {
+  animation: float 6s ease-in-out 1s infinite;
+}
+
+.animate-float-delay-2 {
+  animation: float 6s ease-in-out 2s infinite;
+}
+
+.animate-float-delay-3 {
+  animation: float 6s ease-in-out 3s infinite;
+}
