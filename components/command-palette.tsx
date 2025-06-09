@@ -39,20 +39,6 @@ export default function CommandPalette() {
     return () => document.removeEventListener("keydown", down)
   }, [setOpen])
 
-  const handleNavigation = (href: string) => {
-    setOpen(false)
-    setTimeout(() => {
-      window.location.href = href
-    }, 100)
-  }
-
-  const handleExternalLink = (url: string) => {
-    setOpen(false)
-    setTimeout(() => {
-      window.open(url, "_blank", "noopener,noreferrer")
-    }, 100)
-  }
-
   return (
     <CommandDialog open={open} onOpenChange={setOpen}>
       <CommandInput placeholder="Type a command or search..." />
@@ -60,87 +46,109 @@ export default function CommandPalette() {
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Navigation">
           <CommandItem
-            onSelect={() => handleNavigation("/")}
-            className="flex items-center gap-2 text-sm cursor-pointer"
+            onSelect={() => {
+              setOpen(false)
+              window.location.href = "/"
+            }}
           >
-            <Home className="h-4 w-4" />
+            <Home className="mr-2 h-4 w-4" />
             <span>Home</span>
           </CommandItem>
           <CommandItem
-            onSelect={() => handleNavigation("/about")}
-            className="flex items-center gap-2 text-sm cursor-pointer"
+            onSelect={() => {
+              setOpen(false)
+              window.location.href = "/about"
+            }}
           >
-            <Info className="h-4 w-4" />
+            <Info className="mr-2 h-4 w-4" />
             <span>About</span>
           </CommandItem>
           <CommandItem
-            onSelect={() => handleNavigation("/services")}
-            className="flex items-center gap-2 text-sm cursor-pointer"
+            onSelect={() => {
+              setOpen(false)
+              window.location.href = "/services"
+            }}
           >
-            <LayoutDashboard className="h-4 w-4" />
+            <LayoutDashboard className="mr-2 h-4 w-4" />
             <span>Services</span>
           </CommandItem>
           <CommandItem
-            onSelect={() => handleNavigation("/timeline")}
-            className="flex items-center gap-2 text-sm cursor-pointer"
+            onSelect={() => {
+              setOpen(false)
+              window.location.href = "/timeline"
+            }}
           >
-            <Timer className="h-4 w-4" />
+            <Timer className="mr-2 h-4 w-4" />
             <span>Timeline</span>
           </CommandItem>
           <CommandItem
-            onSelect={() => handleNavigation("/blog")}
-            className="flex items-center gap-2 text-sm cursor-pointer"
+            onSelect={() => {
+              setOpen(false)
+              window.location.href = "/blog"
+            }}
           >
-            <PanelRight className="h-4 w-4" />
+            <PanelRight className="mr-2 h-4 w-4" />
             <span>Blog</span>
           </CommandItem>
           <CommandItem
-            onSelect={() => handleNavigation("/enquiry")}
-            className="flex items-center gap-2 text-sm cursor-pointer"
+            onSelect={() => {
+              setOpen(false)
+              window.location.href = "/enquiry"
+            }}
           >
-            <Mail className="h-4 w-4" />
+            <Mail className="mr-2 h-4 w-4" />
             <span>Contact</span>
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Services">
           <CommandItem
-            onSelect={() => handleNavigation("/services#static")}
-            className="flex items-center gap-2 text-sm cursor-pointer"
+            onSelect={() => {
+              setOpen(false)
+              window.location.href = "/services#static"
+            }}
           >
-            <FileCode className="h-4 w-4" />
+            <FileCode className="mr-2 h-4 w-4" />
             <span>Static Website</span>
           </CommandItem>
           <CommandItem
-            onSelect={() => handleNavigation("/services#shopify")}
-            className="flex items-center gap-2 text-sm cursor-pointer"
+            onSelect={() => {
+              setOpen(false)
+              window.location.href = "/services#shopify"
+            }}
           >
-            <ShoppingCart className="h-4 w-4" />
+            <ShoppingCart className="mr-2 h-4 w-4" />
             <span>Shopify Store</span>
           </CommandItem>
           <CommandItem
-            onSelect={() => handleNavigation("/services#fullstack")}
-            className="flex items-center gap-2 text-sm cursor-pointer"
+            onSelect={() => {
+              setOpen(false)
+              window.location.href = "/services#fullstack"
+            }}
           >
-            <Code2 className="h-4 w-4" />
+            <Code2 className="mr-2 h-4 w-4" />
             <span>Full Stack Website</span>
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Social">
           <CommandItem
-            onSelect={() => handleExternalLink("https://github.com")}
-            className="flex items-center gap-2 text-sm cursor-pointer"
+            onSelect={() => {
+              setOpen(false)
+              window.open("https://github.com", "_blank")
+            }}
           >
-            <Github className="h-4 w-4" />
+            <Github className="mr-2 h-4 w-4" />
             <span>GitHub</span>
           </CommandItem>
           <CommandItem
-            onSelect={() => handleExternalLink("https://twitter.com")}
-            className="flex items-center gap-2 text-sm cursor-pointer"
+            onSelect={() => {
+              setOpen(false)
+              window.open("https://twitter.com", "_blank")
+            }}
           >
             <svg
-              className="h-4 w-4"
+              className="mr-2 h-4 w-4"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -156,11 +164,13 @@ export default function CommandPalette() {
             <span>Twitter</span>
           </CommandItem>
           <CommandItem
-            onSelect={() => handleExternalLink("https://linkedin.com")}
-            className="flex items-center gap-2 text-sm cursor-pointer"
+            onSelect={() => {
+              setOpen(false)
+              window.open("https://linkedin.com", "_blank")
+            }}
           >
             <svg
-              className="h-4 w-4"
+              className="mr-2 h-4 w-4"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
