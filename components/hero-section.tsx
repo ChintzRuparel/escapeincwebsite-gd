@@ -116,21 +116,30 @@ export function useProject(id) {
               </Link>
             </div>
 
-            <div className="pt-6 grid grid-cols-3 gap-4">
+            <div className="pt-6 flex flex-wrap gap-6 items-center">
               {[
-                { icon: <Code className="h-6 w-6 text-cyan-400 mb-2" />, text: "100+ Components" },
-                { icon: <Terminal className="h-6 w-6 text-purple-400 mb-2" />, text: "CLI Tools" },
-                { icon: <Github className="h-6 w-6 text-blue-400 mb-2" />, text: "Open Source" },
+                { icon: <Code className="h-5 w-5 text-cyan-400" />, text: "100+ Components", desc: "Ready to use" },
+                {
+                  icon: <Terminal className="h-5 w-5 text-purple-400" />,
+                  text: "CLI Tools",
+                  desc: "Developer friendly",
+                },
+                { icon: <Github className="h-5 w-5 text-blue-400" />, text: "Open Source", desc: "Community driven" },
               ].map((item, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4, delay: 0.6 + i * 0.1 }}
-                  className="flex flex-col items-center justify-center p-3 bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg"
+                  className="flex items-center space-x-3 text-gray-300"
                 >
-                  {item.icon}
-                  <span className="text-sm text-gray-300">{item.text}</span>
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800/30 border border-gray-700/50">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-white">{item.text}</div>
+                    <div className="text-xs text-gray-400">{item.desc}</div>
+                  </div>
                 </motion.div>
               ))}
             </div>
