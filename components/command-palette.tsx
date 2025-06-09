@@ -39,14 +39,18 @@ export default function CommandPalette() {
     return () => document.removeEventListener("keydown", down)
   }, [setOpen])
 
-  const runCommand = (url: string) => {
+  const handleNavigation = (href: string) => {
     setOpen(false)
-    window.location.href = url
+    setTimeout(() => {
+      window.location.href = href
+    }, 100)
   }
 
-  const runExternalCommand = (url: string) => {
+  const handleExternalLink = (url: string) => {
     setOpen(false)
-    window.open(url, "_blank")
+    setTimeout(() => {
+      window.open(url, "_blank", "noopener,noreferrer")
+    }, 100)
   }
 
   return (
@@ -55,42 +59,69 @@ export default function CommandPalette() {
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Navigation">
-          <CommandItem onSelect={() => runCommand("/")} className="flex items-center gap-2 text-sm">
+          <CommandItem
+            onSelect={() => handleNavigation("/")}
+            className="flex items-center gap-2 text-sm cursor-pointer"
+          >
             <Home className="h-4 w-4" />
             <span>Home</span>
           </CommandItem>
-          <CommandItem onSelect={() => runCommand("/about")} className="flex items-center gap-2 text-sm">
+          <CommandItem
+            onSelect={() => handleNavigation("/about")}
+            className="flex items-center gap-2 text-sm cursor-pointer"
+          >
             <Info className="h-4 w-4" />
             <span>About</span>
           </CommandItem>
-          <CommandItem onSelect={() => runCommand("/services")} className="flex items-center gap-2 text-sm">
+          <CommandItem
+            onSelect={() => handleNavigation("/services")}
+            className="flex items-center gap-2 text-sm cursor-pointer"
+          >
             <LayoutDashboard className="h-4 w-4" />
             <span>Services</span>
           </CommandItem>
-          <CommandItem onSelect={() => runCommand("/timeline")} className="flex items-center gap-2 text-sm">
+          <CommandItem
+            onSelect={() => handleNavigation("/timeline")}
+            className="flex items-center gap-2 text-sm cursor-pointer"
+          >
             <Timer className="h-4 w-4" />
             <span>Timeline</span>
           </CommandItem>
-          <CommandItem onSelect={() => runCommand("/blog")} className="flex items-center gap-2 text-sm">
+          <CommandItem
+            onSelect={() => handleNavigation("/blog")}
+            className="flex items-center gap-2 text-sm cursor-pointer"
+          >
             <PanelRight className="h-4 w-4" />
             <span>Blog</span>
           </CommandItem>
-          <CommandItem onSelect={() => runCommand("/enquiry")} className="flex items-center gap-2 text-sm">
+          <CommandItem
+            onSelect={() => handleNavigation("/enquiry")}
+            className="flex items-center gap-2 text-sm cursor-pointer"
+          >
             <Mail className="h-4 w-4" />
             <span>Contact</span>
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Services">
-          <CommandItem onSelect={() => runCommand("/services#static")} className="flex items-center gap-2 text-sm">
+          <CommandItem
+            onSelect={() => handleNavigation("/services#static")}
+            className="flex items-center gap-2 text-sm cursor-pointer"
+          >
             <FileCode className="h-4 w-4" />
             <span>Static Website</span>
           </CommandItem>
-          <CommandItem onSelect={() => runCommand("/services#shopify")} className="flex items-center gap-2 text-sm">
+          <CommandItem
+            onSelect={() => handleNavigation("/services#shopify")}
+            className="flex items-center gap-2 text-sm cursor-pointer"
+          >
             <ShoppingCart className="h-4 w-4" />
             <span>Shopify Store</span>
           </CommandItem>
-          <CommandItem onSelect={() => runCommand("/services#fullstack")} className="flex items-center gap-2 text-sm">
+          <CommandItem
+            onSelect={() => handleNavigation("/services#fullstack")}
+            className="flex items-center gap-2 text-sm cursor-pointer"
+          >
             <Code2 className="h-4 w-4" />
             <span>Full Stack Website</span>
           </CommandItem>
@@ -98,15 +129,15 @@ export default function CommandPalette() {
         <CommandSeparator />
         <CommandGroup heading="Social">
           <CommandItem
-            onSelect={() => runExternalCommand("https://github.com")}
-            className="flex items-center gap-2 text-sm"
+            onSelect={() => handleExternalLink("https://github.com")}
+            className="flex items-center gap-2 text-sm cursor-pointer"
           >
             <Github className="h-4 w-4" />
             <span>GitHub</span>
           </CommandItem>
           <CommandItem
-            onSelect={() => runExternalCommand("https://twitter.com")}
-            className="flex items-center gap-2 text-sm"
+            onSelect={() => handleExternalLink("https://twitter.com")}
+            className="flex items-center gap-2 text-sm cursor-pointer"
           >
             <svg
               className="h-4 w-4"
@@ -125,8 +156,8 @@ export default function CommandPalette() {
             <span>Twitter</span>
           </CommandItem>
           <CommandItem
-            onSelect={() => runExternalCommand("https://linkedin.com")}
-            className="flex items-center gap-2 text-sm"
+            onSelect={() => handleExternalLink("https://linkedin.com")}
+            className="flex items-center gap-2 text-sm cursor-pointer"
           >
             <svg
               className="h-4 w-4"
