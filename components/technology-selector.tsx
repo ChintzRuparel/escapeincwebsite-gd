@@ -224,10 +224,10 @@ export default function TechnologySelector() {
     },
   ]
 
-  // Code samples for each technology
-  const codeSamples: Record<string, { code: string, filename: string }> = {
+  // Add this after the technologies array
+  const codeSamples = {
     // Frontend
-    "React": {
+    React: {
       filename: "App.jsx",
       code: `import React, { useState } from 'react';
 
@@ -248,7 +248,7 @@ function Counter() {
   );
 }
 
-export default Counter;`
+export default Counter;`,
     },
     "Next.js": {
       filename: "page.tsx",
@@ -260,7 +260,7 @@ export default function Product({ product }) {
     <div>
       <h1>{product.name}</h1>
       <p>{product.description}</p>
-      <p>Price: ${'{product.price}'}</p>
+      <p>Price: ${"{product.price}"}</p>
     </div>
   );
 }
@@ -273,9 +273,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: { product },
   };
-}`
+}`,
     },
-    "Vue": {
+    Vue: {
       filename: "Counter.vue",
       code: `<template>
   <div class="counter">
@@ -305,9 +305,9 @@ function reset() {
   text-align: center;
   padding: 20px;
 }
-</style>`
+</style>`,
     },
-    "Angular": {
+    Angular: {
       filename: "counter.component.ts",
       code: `import { Component } from '@angular/core';
 
@@ -338,7 +338,7 @@ export class CounterComponent {
   reset() {
     this.count = 0;
   }
-}`
+}`,
     },
     "Tailwind CSS": {
       filename: "tailwind.html",
@@ -363,9 +363,9 @@ export class CounterComponent {
       </button>
     </div>
   </div>
-</div>`
+</div>`,
     },
-    "SASS": {
+    SASS: {
       filename: "styles.scss",
       code: `// Variables
 $primary-color: #3498db;
@@ -417,9 +417,9 @@ $border-radius: 4px;
     @include flex-center;
     border-bottom: 1px solid #eee;
   }
-}`
+}`,
     },
-    "TypeScript": {
+    TypeScript: {
       filename: "user.ts",
       code: `// Define interfaces
 interface Address {
@@ -473,9 +473,9 @@ const users: User[] = [
 
 const activeAdmins = filterUsers(users, 
   user => user.isActive && isAdmin(user)
-);`
+);`,
     },
-    "JavaScript": {
+    JavaScript: {
       filename: "app.js",
       code: `// Modern JavaScript features
 const fetchUserData = async (userId) => {
@@ -521,7 +521,7 @@ const adultUsers = users
     name: user.name.toUpperCase()
   }));
 
-console.log(adultUsers);`
+console.log(adultUsers);`,
     },
 
     // Backend
@@ -583,9 +583,9 @@ const server = http.createServer(async (req, res) => {
 
 server.listen(PORT, () => {
   console.log(\`Server running on port \${PORT}\`);
-});`
+});`,
     },
-    "Express": {
+    Express: {
       filename: "app.js",
       code: `const express = require('express');
 const morgan = require('morgan');
@@ -644,9 +644,9 @@ app.listen(PORT, () => {
   console.log(\`Server running on port \${PORT}\`);
 });
 
-module.exports = app;`
+module.exports = app;`,
     },
-    "Django": {
+    Django: {
       filename: "views.py",
       code: `from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
@@ -703,7 +703,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     """API endpoint for categories (read-only)."""
     queryset = Category.objects.all()
-    serializer_class = CategorySerializer`
+    serializer_class = CategorySerializer`,
     },
     "Ruby on Rails": {
       filename: "products_controller.rb",
@@ -788,9 +788,9 @@ class CategoryViewSet(viewsets.ReadOnlyModelViewSet):
     params.require(:product).permit(:name, :description, :price, 
                                    :category_id, :featured, images: [])
   end
-end`
+end`,
     },
-    "MongoDB": {
+    MongoDB: {
       filename: "mongodb-queries.js",
       code: `// Connect to MongoDB
 const { MongoClient } = require('mongodb');
@@ -880,9 +880,9 @@ async function main() {
   }
 }
 
-main().catch(console.error);`
+main().catch(console.error);`,
     },
-    "PostgreSQL": {
+    PostgreSQL: {
       filename: "queries.sql",
       code: `-- Create tables with relationships
 CREATE TABLE customers (
@@ -979,9 +979,9 @@ SELECT
 FROM products p
 JOIN order_items oi ON p.product_id = oi.product_id
 GROUP BY p.product_id
-ORDER BY p.category, units_sold DESC;`
+ORDER BY p.category, units_sold DESC;`,
     },
-    "GraphQL": {
+    GraphQL: {
       filename: "schema.graphql",
       code: `# GraphQL Schema Definition
 
@@ -1152,9 +1152,9 @@ type Subscription {
   newPost: Post!
   newComment(postId: ID!): Comment!
 }
-`
+`,
     },
-    "Firebase": {
+    Firebase: {
       filename: "firebase-app.js",
       code: `// Firebase Web App Configuration
 import { initializeApp } from 'firebase/app';
@@ -1325,11 +1325,11 @@ export const subscribeToCollection = (collectionName, callback) => {
     }));
     callback(documents);
   });
-};`
+};`,
     },
 
     // Tools & DevOps
-    "Git": {
+    Git: {
       filename: "git-commands.sh",
       code: `#!/bin/bash
 # Common Git workflow commands
@@ -1344,154 +1344,66 @@ git clone https://github.com/username/repository.git
 git status
 
 # Stage changes for commit
-git add file.txt                # Stage specific file
-git add directory/              # Stage directory
-git add -p                      # Interactive staging
-git add .                       # Stage all changes
+git add file.txt
+git add .
 
 # Commit changes
-git commit -m "Add feature X"   # Commit with message
-git commit -a -m "Fix bug Y"    # Stage tracked files and commit
+git commit -m "Add feature X"
 
 # Branching
-git branch                      # List branches
-git branch feature-x            # Create new branch
-git checkout feature-x          # Switch to branch
-git checkout -b bugfix-y        # Create and switch to new branch
-git switch -c new-feature       # Create and switch (Git 2.23+)
+git branch feature-x
+git checkout feature-x
+git checkout -b bugfix-y
 
 # Merging
-git checkout main               # Switch to target branch
-git merge feature-x             # Merge feature branch into current branch
-git merge --no-ff feature-x     # Merge with no fast-forward
-
-# Rebasing
-git checkout feature-x          # Switch to feature branch
-git rebase main                 # Rebase feature branch onto main
-git rebase -i HEAD~3            # Interactive rebase last 3 commits
+git checkout main
+git merge feature-x
 
 # Remote repositories
-git remote -v                   # List remotes
 git remote add origin https://github.com/username/repo.git
-git push -u origin main         # Push and set upstream
-git pull                        # Fetch and merge changes
-git fetch                       # Fetch without merging
-
-# Viewing history
-git log                         # View commit history
-git log --oneline --graph       # Compact history with graph
-git log -p file.txt             # See changes to specific file
-git blame file.txt              # See who changed each line
-
-# Undoing changes
-git restore file.txt            # Discard changes (Git 2.23+)
-git restore --staged file.txt   # Unstage changes (Git 2.23+)
-git reset HEAD~1                # Undo last commit, keep changes
-git reset --hard HEAD~1         # Undo last commit, discard changes
-git revert abc123f              # Create new commit that undoes commit
-
-# Stashing
-git stash                       # Stash changes
-git stash list                  # List stashes
-git stash apply                 # Apply most recent stash
-git stash pop                   # Apply and remove most recent stash
-git stash drop                  # Remove most recent stash
-
-# Tags
-git tag v1.0.0                  # Create lightweight tag
-git tag -a v1.0.0 -m "Version 1.0.0"  # Create annotated tag
-git push origin v1.0.0          # Push tag to remote
-
-# Advanced
-git cherry-pick abc123f         # Apply commit to current branch
-git bisect start                # Start binary search for bug
-git worktree add ../path branch # Create linked working tree
-
-# Configuration
-git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"
-git config --global core.editor "code --wait"  # Set VS Code as editor`
+git push -u origin main
+git pull`,
     },
-    "Docker": {
+    Docker: {
       filename: "Dockerfile",
-      code: `# Use Node.js LTS as the base image
-FROM node:18-alpine AS base
+      code: `FROM node:18-alpine
 
-# Set working directory
 WORKDIR /app
 
-# Install dependencies
-FROM base AS deps
-# Copy package.json and package-lock.json
 COPY package*.json ./
+RUN npm install
 
-# Install dependencies
-RUN npm ci
-
-# Build the application
-FROM deps AS builder
-# Copy all files
 COPY . .
-# Build the application
+
 RUN npm run build
 
-# Production image
-FROM base AS runner
-# Set to production environment
-ENV NODE_ENV production
-
-# Create a non-root user
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-USER nextjs
-
-# Copy built application
-COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
-COPY --from=builder --chown=nextjs:nodejs /app/node_modules ./node_modules
-COPY --from=builder --chown=nextjs:nodejs /app/package.json ./package.json
-COPY --from=builder --chown=nextjs:nodejs /app/public ./public
-
-# Expose the port the app will run on
 EXPOSE 3000
 
-# Start the application
-CMD ["npm", "start"]
-
-# Docker commands to build and run:
-# docker build -t my-nextjs-app .
-# docker run -p 3000:3000 my-nextjs-app`
+CMD ["npm", "start"]`,
     },
-    "Kubernetes": {
+    Kubernetes: {
       filename: "deployment.yaml",
       code: `apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nextjs-app
-  namespace: production
+  name: nodejs-app
   labels:
-    app: nextjs-app
+    app: nodejs-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nextjs-app
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 0
+      app: nodejs-app
   template:
     metadata:
       labels:
-        app: nextjs-app
+        app: nodejs-app
     spec:
       containers:
-      - name: nextjs-app
-        image: my-registry.io/nextjs-app:1.0.0
-        imagePullPolicy: Always
+      - name: nodejs-app
+        image: my-nodejs-app:1.0.0
         ports:
         - containerPort: 3000
-          name: http
         resources:
           limits:
             cpu: 500m
@@ -1499,101 +1411,18 @@ spec:
           requests:
             cpu: 200m
             memory: 256Mi
-        readinessProbe:
-          httpGet:
-            path: /api/health
-            port: http
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        livenessProbe:
-          httpGet:
-            path: /api/health
-            port: http
-          initialDelaySeconds: 15
-          periodSeconds: 20
-        env:
-        - name: DATABASE_URL
-          valueFrom:
-            secretKeyRef:
-              name: app-secrets
-              key: database-url
-        - name: NODE_ENV
-          value: "production"
-        volumeMounts:
-        - name: config-volume
-          mountPath: /app/config
-      volumes:
-      - name: config-volume
-        configMap:
-          name: app-config
-      imagePullSecrets:
-      - name: registry-credentials
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nextjs-app
-  namespace: production
+  name: nodejs-app
 spec:
   selector:
-    app: nextjs-app
+    app: nodejs-app
   ports:
   - port: 80
     targetPort: 3000
-    name: http
-  type: ClusterIP
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: nextjs-app-ingress
-  namespace: production
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-spec:
-  tls:
-  - hosts:
-    - app.example.com
-    secretName: app-tls-cert
-  rules:
-  - host: app.example.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: nextjs-app
-            port:
-              name: http
----
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: nextjs-app-hpa
-  namespace: production
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: nextjs-app
-  minReplicas: 3
-  maxReplicas: 10
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 70
-  - type: Resource
-    resource:
-      name: memory
-      target:
-        type: Utilization
-        averageUtilization: 80`
+  type: ClusterIP`,
     },
     "GitHub Actions": {
       filename: "ci-cd.yml",
@@ -1601,361 +1430,63 @@ spec:
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main ]
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run ESLint
-        run: npm run lint
-
-      - name: Check formatting with Prettier
-        run: npm run format:check
-
   test:
-    name: Test
     runs-on: ubuntu-latest
-    needs: lint
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
+      - uses: actions/checkout@v3
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: 'npm'
-
       - name: Install dependencies
         run: npm ci
-
       - name: Run tests
         run: npm test
 
-      - name: Upload test coverage
-        uses: actions/upload-artifact@v3
-        with:
-          name: coverage
-          path: coverage/
-
-  build:
-    name: Build
-    runs-on: ubuntu-latest
+  deploy:
     needs: test
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build application
-        run: npm run build
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build
-          path: .next/
-
-  deploy-staging:
-    name: Deploy to Staging
     runs-on: ubuntu-latest
-    needs: build
-    if: github.ref == 'refs/heads/develop'
-    environment:
-      name: staging
-      url: https://staging.example.com
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: build
-          path: .next/
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm ci --production
-
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v20
-        with:\
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}\
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}\
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod'
-
-  deploy-production:
-    name: Deploy to Production
-    runs-on: ubuntu-latest
-    needs: build
     if: github.ref == 'refs/heads/main'
-    environment:
-      name: production
-      url: https://example.com
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: build
-          path: .next/
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm ci --production
-
-      - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v20
-        with:\
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}\
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}\
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod'
-
-      - name: Create GitHub Release
-        if: success()
-        uses: actions/create-release@v1
-        env:\
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:\
-          tag_name: v${{ github.run_number }}\
-          release_name: Release v${{ github.run_number }}
-          draft: false
-          prerelease: false`
+      - uses: actions/checkout@v3
+      - name: Deploy to production
+        run: echo "Deploying to production server"`,
     },
-    "AWS": {
+    AWS: {
       filename: "cloudformation.yml",
       code: `AWSTemplateFormatVersion: '2010-09-09'
-Description: 'CloudFormation template for a serverless web application'
-
-Parameters:
-  DomainName:
-    Type: String
-    Description: Domain name for the application
-    Default: example.com
-  
-  Environment:
-    Type: String
-    Description: Deployment environment
-    Default: production
-    AllowedValues:
-      - development
-      - staging
-      - production
-
-  CertificateArn:
-    Type: String
-    Description: ARN of the SSL certificate in ACM
+Description: 'CloudFormation template for a web application'
 
 Resources:
   # S3 bucket for website hosting
   WebsiteBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: !Sub '\${DomainName}-\${Environment}'
+      BucketName: !Sub '\${AWS::StackName}-website'
       AccessControl: Private
       WebsiteConfiguration:
         IndexDocument: index.html
         ErrorDocument: error.html
-      CorsConfiguration:
-        CorsRules:
-          - AllowedHeaders: ['*']
-            AllowedMethods: [GET]
-            AllowedOrigins: ['*']
-            MaxAge: 3000
-      Tags:
-        - Key: Environment
-          Value: !Ref Environment
-
-  # Bucket policy to allow CloudFront access
-  WebsiteBucketPolicy:
-    Type: AWS::S3::BucketPolicy
-    Properties:
-      Bucket: !Ref WebsiteBucket
-      PolicyDocument:
-        Statement:
-          - Action: 's3:GetObject'
-            Effect: Allow
-            Resource: !Sub 'arn:aws:s3:::\${WebsiteBucket}/*'
-            Principal:
-              CanonicalUser: !GetAtt CloudFrontOriginAccessIdentity.S3CanonicalUserId
-
-  # CloudFront Origin Access Identity
-  CloudFrontOriginAccessIdentity:
-    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
-    Properties:
-      CloudFrontOriginAccessIdentityConfig:
-        Comment: !Sub 'OAI for \${DomainName}'
 
   # CloudFront distribution
   CloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
     Properties:
       DistributionConfig:
-        Aliases:
-          - !Ref DomainName
-          - !Sub 'www.\${DomainName}'
         Origins:
           - DomainName: !GetAtt WebsiteBucket.RegionalDomainName
             Id: S3Origin
             S3OriginConfig:
-              OriginAccessIdentity: !Sub 'origin-access-identity/cloudfront/\${CloudFrontOriginAccessIdentity}'
-        DefaultCacheBehavior:
-          AllowedMethods: [GET, HEAD, OPTIONS]
-          CachedMethods: [GET, HEAD, OPTIONS]
-          Compress: true
-          DefaultTTL: 86400
-          ForwardedValues:
-            QueryString: false
-            Cookies:
-              Forward: none
-          TargetOriginId: S3Origin
-          ViewerProtocolPolicy: redirect-to-https
-        DefaultRootObject: index.html
-        CustomErrorResponses:
-          - ErrorCode: 404
-            ResponseCode: 200
-            ResponsePagePath: /index.html
+              OriginAccessIdentity: !Sub 'origin-access-identity/cloudfront/\${CloudFrontOAI}'
         Enabled: true
-        HttpVersion: http2
-        PriceClass: PriceClass_100
-        ViewerCertificate:
-          AcmCertificateArn: !Ref CertificateArn
-          MinimumProtocolVersion: TLSv1.2_2021
-          SslSupportMethod: sni-only
-        Tags:
-          - Key: Environment
-            Value: !Ref Environment
-
-  # API Gateway REST API
-  ApiGateway:
-    Type: AWS::ApiGateway::RestApi
-    Properties:
-      Name: !Sub '\${DomainName}-api-\${Environment}'
-      Description: API for serverless application
-      EndpointConfiguration:
-        Types:
-          - REGIONAL
-
-  # Lambda function for API backend
-  ApiLambdaFunction:
-    Type: AWS::Lambda::Function
-    Properties:
-      FunctionName: !Sub '\${DomainName}-api-\${Environment}'
-      Handler: index.handler
-      Role: !GetAtt LambdaExecutionRole.Arn
-      Code:
-        ZipFile: |
-          exports.handler = async (event) => {
-            return {
-              statusCode: 200,
-              headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-              },
-              body: JSON.stringify({
-                message: 'Hello from Lambda!'
-              })
-            };
-          };
-      Runtime: nodejs18.x
-      Timeout: 30
-      MemorySize: 128
-      Environment:
-        Variables:
-          ENVIRONMENT: !Ref Environment
-      Tags:
-        - Key: Environment
-          Value: !Ref Environment
-
-  # IAM role for Lambda execution
-  LambdaExecutionRole:
-    Type: AWS::IAM::Role
-    Properties:
-      AssumeRolePolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-          - Effect: Allow
-            Principal:
-              Service: lambda.amazonaws.com
-            Action: 'sts:AssumeRole'
-      ManagedPolicyArns:
-        - 'arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
-
-  # DynamoDB table for application data
-  DynamoDBTable:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      TableName: !Sub '\${DomainName}-data-\${Environment}'
-      BillingMode: PAY_PER_REQUEST
-      AttributeDefinitions:
-        - AttributeName: id
-          AttributeType: S
-      KeySchema:
-        - AttributeName: id
-          KeyType: HASH
-      Tags:
-        - Key: Environment
-          Value: !Ref Environment
-
-Outputs:
-  WebsiteBucketName:
-    Description: Name of S3 bucket to hold website content
-    Value: !Ref WebsiteBucket
-
-  CloudFrontDistributionId:
-    Description: ID of CloudFront distribution
-    Value: !Ref CloudFrontDistribution
-
-  CloudFrontDomainName:
-    Description: Domain name of CloudFront distribution
-    Value: !GetAtt CloudFrontDistribution.DomainName
-
-  ApiGatewayUrl:
-    Description: URL of the API Gateway endpoint
-    Value: !Sub 'https://\${ApiGateway}.execute-api.\${AWS::Region}.amazonaws.com/prod'
-
-  DynamoDBTableName:
-    Description: Name of the DynamoDB table
-    Value: !Ref DynamoDBTable`
+        DefaultRootObject: index.html`,
     },
-    "Vercel": {
+    Vercel: {
       filename: "vercel.json",
       code: `{
   "version": 2,
@@ -1964,16 +1495,9 @@ Outputs:
   "installCommand": "npm install",
   "framework": "nextjs",
   "outputDirectory": ".next",
-  "regions": ["iad1", "sfo1", "hnd1"],
   "env": {
     "DATABASE_URL": "@database_url",
-    "API_KEY": "@api_key",
-    "NODE_ENV": "production"
-  },
-  "build": {
-    "env": {
-      "NEXT_PUBLIC_API_URL": "@next_public_api_url"
-    }
+    "API_KEY": "@api_key"
   },
   "headers": [
     {
@@ -1986,245 +1510,43 @@ Outputs:
         {
           "key": "X-Frame-Options",
           "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=()"
-        }
-      ]
-    },
-    {
-      "source": "/api/(.*)",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "GET, POST, PUT, DELETE, OPTIONS"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "X-Requested-With, Content-Type, Accept"
-        }
-      ]
-    },
-    {
-      "source": "/_next/static/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
         }
       ]
     }
-  ],
-  "redirects": [
-    { "source": "/blog", "destination": "/articles", "permanent": true },
-    { "source": "/docs", "destination": "/documentation", "permanent": false }
-  ],
-  "rewrites": [
-    { "source": "/api/:path*", "destination": "/api/:path*" },
-    { "source": "/health", "destination": "/api/health" }
-  ],
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "github": {
-    "enabled": true,
-    "silent": false
-  }
-}`
+  ]
+}`,
     },
-    "Jest": {
+    Jest: {
       filename: "test.js",
-      code: `import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+      code: `import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import axios from 'axios';
 import UserProfile from '../components/UserProfile';
 
-// Mock axios
-jest.mock('axios');
-
-// Mock data
-const mockUser = {
-  id: 1,
-  name: 'John Doe',
-  email: 'john@example.com',
-  role: 'admin',
-  avatar: 'https://example.com/avatar.jpg',
-  bio: 'Software developer with 5 years of experience'
-};
-
 describe('UserProfile Component', () => {
-  beforeEach(() => {
-    // Clear all mocks before each test
-    jest.clearAllMocks();
-  });
-
-  test('renders loading state initially', () => {
-    render(<UserProfile userId={1} />);
-    expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
-    expect(screen.queryByText('John Doe')).not.toBeInTheDocument();
-  });
-
-  test('renders user data after successful API call', async () => {
-    // Mock the API response
-    axios.get.mockResolvedValueOnce({ data: mockUser });
+  test('renders user information correctly', () => {
+    render(<UserProfile name="John Doe" email="john@example.com" />);
     
-    render(<UserProfile userId={1} />);
-    
-    // Wait for the user data to load
-    await waitFor(() => {
-      expect(screen.queryByTestId('loading-spinner')).not.toBeInTheDocument();
-    });
-    
-    // Check if user data is displayed
     expect(screen.getByText('John Doe')).toBeInTheDocument();
     expect(screen.getByText('john@example.com')).toBeInTheDocument();
-    expect(screen.getByText('admin')).toBeInTheDocument();
-    expect(screen.getByAltText('User avatar')).toHaveAttribute('src', mockUser.avatar);
-    expect(screen.getByText(mockUser.bio)).toBeInTheDocument();
   });
 
-  test('displays error message when API call fails', async () => {
-    // Mock the API error
-    const errorMessage = 'Failed to fetch user data';
-    axios.get.mockRejectedValueOnce(new Error(errorMessage));
-    
-    render(<UserProfile userId={1} />);
-    
-    // Wait for the error message to appear
-    await waitFor(() => {
-      expect(screen.queryByTestId('loading-spinner')).not.toBeInTheDocument();
-    });
-    
-    expect(screen.getByText(/error loading user profile/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /retry/i })).toBeInTheDocument();
-  });
-
-  test('edit button toggles edit mode', async () => {
-    // Mock the API response
-    axios.get.mockResolvedValueOnce({ data: mockUser });
-    
-    render(<UserProfile userId={1} editable={true} />);
-    
-    // Wait for the user data to load
-    await waitFor(() => {
-      expect(screen.queryByTestId('loading-spinner')).not.toBeInTheDocument();
-    });
-    
-    // Initially not in edit mode
-    expect(screen.queryByLabelText(/name/i)).not.toBeInTheDocument();
+  test('edit button toggles edit mode', () => {
+    render(<UserProfile name="John Doe" email="john@example.com" />);
     
     // Click edit button
-    fireEvent.click(screen.getByRole('button', { name: /edit profile/i }));
+    fireEvent.click(screen.getByRole('button', { name: /edit/i }));
     
     // Should now be in edit mode
     expect(screen.getByLabelText(/name/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/bio/i)).toBeInTheDocument();
-    
-    // Form fields should have the user's data
-    expect(screen.getByLabelText(/name/i)).toHaveValue(mockUser.name);
-    expect(screen.getByLabelText(/email/i)).toHaveValue(mockUser.email);
-    expect(screen.getByLabelText(/bio/i)).toHaveValue(mockUser.bio);
   });
-
-  test('submits updated user data', async () => {
-    // Mock the API responses
-    axios.get.mockResolvedValueOnce({ data: mockUser });
-    axios.put.mockResolvedValueOnce({ data: { ...mockUser, name: 'Jane Doe' } });
-    
-    render(<UserProfile userId={1} editable={true} />);
-    
-    // Wait for the user data to load
-    await waitFor(() => {
-      expect(screen.queryByTestId('loading-spinner')).not.toBeInTheDocument();
-    });
-    
-    // Enter edit mode
-    fireEvent.click(screen.getByRole('button', { name: /edit profile/i }));
-    
-    // Change the name
-    const nameInput = screen.getByLabelText(/name/i);
-    fireEvent.change(nameInput, { target: { value: 'Jane Doe' } });
-    
-    // Submit the form
-    fireEvent.click(screen.getByRole('button', { name: /save/i }));
-    
-    // Check if the API was called with the updated data
-    await waitFor(() => {
-      expect(axios.put).toHaveBeenCalledWith(
-        expect.any(String),
-        expect.objectContaining({ name: 'Jane Doe' })
-      );
-    });
-    
-    // Should show success message
-    expect(screen.getByText(/profile updated successfully/i)).toBeInTheDocument();
-  });
-
-  test('cancel button exits edit mode without saving', async () => {
-    // Mock the API response
-    axios.get.mockResolvedValueOnce({ data: mockUser });
-    
-    render(<UserProfile userId={1} editable={true} />);
-    
-    // Wait for the user data to load
-    await waitFor(() => {
-      expect(screen.queryByTestId('loading-spinner')).not.toBeInTheDocument();
-    });
-    
-    // Enter edit mode
-    fireEvent.click(screen.getByRole('button', { name: /edit profile/i }));
-    
-    // Change the name
-    const nameInput = screen.getByLabelText(/name/i);
-    fireEvent.change(nameInput, { target: { value: 'Jane Doe' } });
-    
-    // Click cancel
-    fireEvent.click(screen.getByRole('button', { name: /cancel/i }));
-    
-    // Should exit edit mode
-    expect(screen.queryByLabelText(/name/i)).not.toBeInTheDocument();
-    
-    // Should still show the original name
-    expect(screen.getByText('John Doe')).toBeInTheDocument();
-    
-    // API put should not have been called
-    expect(axios.put).not.toHaveBeenCalled();
-  });
-});`
+});`,
     },
-    "Webpack": {
+    Webpack: {
       filename: "webpack.config.js",
       code: `const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const webpack = require('webpack');
-const dotenv = require('dotenv');
-
-// Load environment variables from .env file
-const env = dotenv.config().parsed || {};
-const envKeys = Object.keys(env).reduce((prev, next) => {
-  prev[\`process.env.\${next}\`] = JSON.stringify(env[next]);
-  return prev;
-}, {});
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
@@ -2234,227 +1556,38 @@ module.exports = (env, argv) => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: isProduction 
-        ? 'static/js/[name].[contenthash:8].js' 
-        : 'static/js/[name].bundle.js',
-      chunkFilename: isProduction 
-        ? 'static/js/[name].[contenthash:8].chunk.js' 
-        : 'static/js/[name].chunk.js',
-      publicPath: '/',
-      assetModuleFilename: 'static/media/[name].[hash][ext]'
-    },
-    devtool: isProduction ? 'source-map' : 'eval-source-map',
-    devServer: {
-      static: {
-        directory: path.join(__dirname, 'public'),
-      },
-      port: 3000,
-      hot: true,
-      historyApiFallback: true,
-      compress: true,
-      client: {
-        overlay: {
-          errors: true,
-          warnings: false,
-        },
-      },
+        ? '[name].[contenthash].js' 
+        : '[name].bundle.js',
+      publicPath: '/'
     },
     module: {
       rules: [
-        // JavaScript/React
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                '@babel/preset-env',
-                ['@babel/preset-react', { runtime: 'automatic' }]
-              ],
-              plugins: [
-                '@babel/plugin-transform-runtime',
-                isProduction && 'transform-react-remove-prop-types'
-              ].filter(Boolean)
-            }
+            loader: 'babel-loader'
           }
         },
-        // TypeScript
         {
-          test: /\.(ts|tsx)$/,
-          exclude: /node_modules/,
-          use: 'ts-loader',
-        },
-        // CSS, PostCSS, Sass
-        {
-          test: /\.(css|scss|sass)$/,
+          test: /\.css$/,
           use: [
             isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-            {
-              loader: 'css-loader',
-              options: {
-                importLoaders: 2,
-                sourceMap: !isProduction,
-                modules: {
-                  auto: true,
-                  localIdentName: isProduction
-                    ? '[hash:base64]'
-                    : '[path][name]__[local]'
-                },
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                postcssOptions: {
-                  plugins: [
-                    'postcss-flexbugs-fixes',
-                    [
-                      'postcss-preset-env',
-                      {
-                        autoprefixer: {
-                          flexbox: 'no-2009',
-                        },
-                        stage: 3,
-                      },
-                    ],
-                    'postcss-normalize',
-                  ],
-                },
-                sourceMap: !isProduction,
-              },
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: !isProduction,
-              },
-            },
-          ],
-        },
-        // Images
-        {
-          test: /\.(png|jpg|jpeg|gif|svg|webp|avif)$/i,
-          type: 'asset',
-          parser: {
-            dataUrlCondition: {
-              maxSize: 10 * 1024, // 10kb
-            },
-          },
-        },
-        // Fonts
-        {
-          test: /\.(woff|woff2|eot|ttf|otf)$/i,
-          type: 'asset/resource',
-        },
-        // Data
-        {
-          test: /\.(csv|tsv)$/i,
-          use: ['csv-loader'],
-        },
-        {
-          test: /\.xml$/i,
-          use: ['xml-loader'],
-        },
-      ],
-    },
-    resolve: {
-      extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
-      alias: {
-        '@': path.resolve(__dirname, 'src'),
-        'components': path.resolve(__dirname, 'src/components'),
-        'pages': path.resolve(__dirname, 'src/pages'),
-        'assets': path.resolve(__dirname, 'src/assets'),
-        'utils': path.resolve(__dirname, 'src/utils'),
-        'hooks': path.resolve(__dirname, 'src/hooks'),
-        'context': path.resolve(__dirname, 'src/context'),
-      },
-    },
-    optimization: {
-      minimize: isProduction,
-      minimizer: [
-        new TerserPlugin({
-          terserOptions: {
-            parse: {
-              ecma: 8,
-            },
-            compress: {
-              ecma: 5,
-              warnings: false,
-              comparisons: false,
-              inline: 2,
-            },
-            mangle: {
-              safari10: true,
-            },
-            output: {
-              ecma: 5,
-              comments: false,
-              ascii_only: true,
-            },
-          },
-        }),
-        new CssMinimizerPlugin(),
-      ],
-      splitChunks: {
-        chunks: 'all',
-        name: false,
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            chunks: 'all',
-          },
-        },
-      },
-      runtimeChunk: {
-        name: entrypoint => \`runtime-\${entrypoint.name}\`,
-      },
+            'css-loader'
+          ]
+        }
+      ]
     },
     plugins: [
-      new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        template: './public/index.html',
-        favicon: './public/favicon.ico',
-        minify: isProduction ? {
-          removeComments: true,
-          collapseWhitespace: true,
-          removeRedundantAttributes: true,
-          useShortDoctype: true,
-          removeEmptyAttributes: true,
-          removeStyleLinkTypeAttributes: true,
-          keepClosingSlash: true,
-          minifyJS: true,
-          minifyCSS: true,
-          minifyURLs: true,
-        } : undefined,
+        template: './public/index.html'
       }),
-      isProduction && new MiniCssExtractPlugin({
-        filename: 'static/css/[name].[contenthash:8].css',
-        chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
-      }),
-      new webpack.DefinePlugin(envKeys),
-      new CopyWebpackPlugin({
-        patterns: [
-          {
-            from: 'public',
-            to: '',
-            globOptions: {
-              ignore: ['**/index.html', '**/favicon.ico'],
-            },
-          },
-        ],
-      }),
-      process.env.ANALYZE === 'true' && new BundleAnalyzerPlugin(),
-    ].filter(Boolean),
-    performance: {
-      hints: isProduction ? 'warning' : false,
-      maxEntrypointSize: 512000,
-      maxAssetSize: 512000,
+      isProduction && new MiniCssExtractPlugin()
+    ].filter(Boolean)
+  };
+};`,
     },
-  };
-};`
-    }
-  };
+  }
 
   const filteredTech = technologies.filter((tech) => tech.category === selectedCategory)
   const selectedTechnology = technologies.find((tech) => tech.name === selectedTech)
