@@ -118,27 +118,53 @@ export function useProject(id) {
 
             <div className="pt-6 flex flex-wrap gap-6 items-center">
               {[
-                { icon: <Code className="h-5 w-5 text-cyan-400" />, text: "100+ Components", desc: "Ready to use" },
                 {
-                  icon: <Terminal className="h-5 w-5 text-purple-400" />,
+                  icon: <Code className="h-5 w-5 text-cyan-400 group-hover:text-cyan-300 transition-colors" />,
+                  text: "100+ Components",
+                  desc: "Ready to use",
+                  iconBg: "bg-cyan-500/10",
+                  hoverIconBg: "group-hover:bg-cyan-500/20",
+                  textGradient:
+                    "group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-blue-400",
+                },
+                {
+                  icon: <Terminal className="h-5 w-5 text-purple-400 group-hover:text-purple-300 transition-colors" />,
                   text: "CLI Tools",
                   desc: "Developer friendly",
+                  iconBg: "bg-purple-500/10",
+                  hoverIconBg: "group-hover:bg-purple-500/20",
+                  textGradient:
+                    "group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400",
                 },
-                { icon: <Github className="h-5 w-5 text-blue-400" />, text: "Open Source", desc: "Community driven" },
+                {
+                  icon: <Github className="h-5 w-5 text-blue-400 group-hover:text-blue-300 transition-colors" />,
+                  text: "Open Source",
+                  desc: "Community driven",
+                  iconBg: "bg-blue-500/10",
+                  hoverIconBg: "group-hover:bg-blue-500/20",
+                  textGradient:
+                    "group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-indigo-400",
+                },
               ].map((item, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4, delay: 0.6 + i * 0.1 }}
-                  className="flex items-center space-x-3 text-gray-300"
+                  className="flex items-center space-x-3 text-gray-300 group cursor-pointer"
                 >
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800/30 border border-gray-700/50">
+                  <div
+                    className={`flex items-center justify-center w-10 h-10 rounded-full border border-gray-700/50 ${item.iconBg} ${item.hoverIconBg} transition-all duration-300 ease-in-out`}
+                  >
                     {item.icon}
                   </div>
                   <div>
-                    <div className="text-sm font-semibold text-white">{item.text}</div>
-                    <div className="text-xs text-gray-400">{item.desc}</div>
+                    <div
+                      className={`text-sm font-semibold text-white ${item.textGradient} transition-all duration-300`}
+                    >
+                      {item.text}
+                    </div>
+                    <div className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors">{item.desc}</div>
                   </div>
                 </motion.div>
               ))}
