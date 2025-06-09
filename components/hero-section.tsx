@@ -104,33 +104,68 @@ export function useProject(id) {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link href="https://github.com" target="_blank">
+              <Link href="https://github.com/Escape-Inc" target="_blank">
                 <Button
                   size="lg"
                   variant="outline"
                   className="border-gray-700 bg-gray-800/50 hover:bg-gray-700/50 text-white h-12 px-6 text-base"
                 >
                   <Github className="mr-2 h-5 w-5" />
-                  Star on GitHub
+                  Check on GitHub
                 </Button>
               </Link>
             </div>
 
-            <div className="pt-6 grid grid-cols-3 gap-4">
+            <div className="pt-6 flex flex-wrap gap-6 items-center">
               {[
-                { icon: <Code className="h-6 w-6 text-cyan-400 mb-2" />, text: "100+ Components" },
-                { icon: <Terminal className="h-6 w-6 text-purple-400 mb-2" />, text: "CLI Tools" },
-                { icon: <Github className="h-6 w-6 text-blue-400 mb-2" />, text: "Open Source" },
+                {
+                  icon: <Code className="h-5 w-5 text-cyan-400 group-hover:text-cyan-300 transition-colors" />,
+                  text: "100+ Components",
+                  desc: "Ready to use",
+                  iconBg: "bg-cyan-500/10",
+                  hoverIconBg: "group-hover:bg-cyan-500/20",
+                  textGradient:
+                    "group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-blue-400",
+                },
+                {
+                  icon: <Terminal className="h-5 w-5 text-purple-400 group-hover:text-purple-300 transition-colors" />,
+                  text: "CLI Tools",
+                  desc: "Developer friendly",
+                  iconBg: "bg-purple-500/10",
+                  hoverIconBg: "group-hover:bg-purple-500/20",
+                  textGradient:
+                    "group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400",
+                },
+                {
+                  icon: <Github className="h-5 w-5 text-blue-400 group-hover:text-blue-300 transition-colors" />,
+                  text: "Open Source",
+                  desc: "Community driven",
+                  iconBg: "bg-blue-500/10",
+                  hoverIconBg: "group-hover:bg-blue-500/20",
+                  textGradient:
+                    "group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-indigo-400",
+                },
               ].map((item, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4, delay: 0.6 + i * 0.1 }}
-                  className="flex flex-col items-center justify-center p-3 bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg"
+                  className="flex items-center space-x-3 text-gray-300 group cursor-pointer"
                 >
-                  {item.icon}
-                  <span className="text-sm text-gray-300">{item.text}</span>
+                  <div
+                    className={`flex items-center justify-center w-10 h-10 rounded-full border border-gray-700/50 ${item.iconBg} ${item.hoverIconBg} transition-all duration-300 ease-in-out`}
+                  >
+                    {item.icon}
+                  </div>
+                  <div>
+                    <div
+                      className={`text-sm font-semibold text-white ${item.textGradient} transition-all duration-300`}
+                    >
+                      {item.text}
+                    </div>
+                    <div className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors">{item.desc}</div>
+                  </div>
                 </motion.div>
               ))}
             </div>
