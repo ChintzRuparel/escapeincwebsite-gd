@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect } from "react"
-import { useRouter } from "next/navigation"
 import {
   CommandDialog,
   CommandEmpty,
@@ -26,7 +25,6 @@ import {
 import { useCommandMenu } from "@/components/command-menu-provider"
 
 export default function CommandPalette() {
-  const router = useRouter()
   const { open, setOpen } = useCommandMenu()
 
   useEffect(() => {
@@ -41,9 +39,14 @@ export default function CommandPalette() {
     return () => document.removeEventListener("keydown", down)
   }, [setOpen])
 
-  const runCommand = (command: () => void) => {
+  const runCommand = (url: string) => {
     setOpen(false)
-    command()
+    window.location.href = url
+  }
+
+  const runExternalCommand = (url: string) => {
+    setOpen(false)
+    window.open(url, "_blank")
   }
 
   return (
@@ -52,66 +55,42 @@ export default function CommandPalette() {
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Navigation">
-          <CommandItem onSelect={() => runCommand(() => router.push("/"))} className="flex items-center gap-2 text-sm">
+          <CommandItem onSelect={() => runCommand("/")} className="flex items-center gap-2 text-sm">
             <Home className="h-4 w-4" />
             <span>Home</span>
           </CommandItem>
-          <CommandItem
-            onSelect={() => runCommand(() => router.push("/about"))}
-            className="flex items-center gap-2 text-sm"
-          >
+          <CommandItem onSelect={() => runCommand("/about")} className="flex items-center gap-2 text-sm">
             <Info className="h-4 w-4" />
             <span>About</span>
           </CommandItem>
-          <CommandItem
-            onSelect={() => runCommand(() => router.push("/services"))}
-            className="flex items-center gap-2 text-sm"
-          >
+          <CommandItem onSelect={() => runCommand("/services")} className="flex items-center gap-2 text-sm">
             <LayoutDashboard className="h-4 w-4" />
             <span>Services</span>
           </CommandItem>
-          <CommandItem
-            onSelect={() => runCommand(() => router.push("/timeline"))}
-            className="flex items-center gap-2 text-sm"
-          >
+          <CommandItem onSelect={() => runCommand("/timeline")} className="flex items-center gap-2 text-sm">
             <Timer className="h-4 w-4" />
             <span>Timeline</span>
           </CommandItem>
-          <CommandItem
-            onSelect={() => runCommand(() => router.push("/blog"))}
-            className="flex items-center gap-2 text-sm"
-          >
+          <CommandItem onSelect={() => runCommand("/blog")} className="flex items-center gap-2 text-sm">
             <PanelRight className="h-4 w-4" />
             <span>Blog</span>
           </CommandItem>
-          <CommandItem
-            onSelect={() => runCommand(() => router.push("/enquiry"))}
-            className="flex items-center gap-2 text-sm"
-          >
+          <CommandItem onSelect={() => runCommand("/enquiry")} className="flex items-center gap-2 text-sm">
             <Mail className="h-4 w-4" />
             <span>Contact</span>
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Services">
-          <CommandItem
-            onSelect={() => runCommand(() => router.push("/services#static"))}
-            className="flex items-center gap-2 text-sm"
-          >
+          <CommandItem onSelect={() => runCommand("/services#static")} className="flex items-center gap-2 text-sm">
             <FileCode className="h-4 w-4" />
             <span>Static Website</span>
           </CommandItem>
-          <CommandItem
-            onSelect={() => runCommand(() => router.push("/services#shopify"))}
-            className="flex items-center gap-2 text-sm"
-          >
+          <CommandItem onSelect={() => runCommand("/services#shopify")} className="flex items-center gap-2 text-sm">
             <ShoppingCart className="h-4 w-4" />
             <span>Shopify Store</span>
           </CommandItem>
-          <CommandItem
-            onSelect={() => runCommand(() => router.push("/services#fullstack"))}
-            className="flex items-center gap-2 text-sm"
-          >
+          <CommandItem onSelect={() => runCommand("/services#fullstack")} className="flex items-center gap-2 text-sm">
             <Code2 className="h-4 w-4" />
             <span>Full Stack Website</span>
           </CommandItem>
@@ -119,14 +98,14 @@ export default function CommandPalette() {
         <CommandSeparator />
         <CommandGroup heading="Social">
           <CommandItem
-            onSelect={() => runCommand(() => window.open("https://github.com", "_blank"))}
+            onSelect={() => runExternalCommand("https://github.com")}
             className="flex items-center gap-2 text-sm"
           >
             <Github className="h-4 w-4" />
             <span>GitHub</span>
           </CommandItem>
           <CommandItem
-            onSelect={() => runCommand(() => window.open("https://twitter.com", "_blank"))}
+            onSelect={() => runExternalCommand("https://twitter.com")}
             className="flex items-center gap-2 text-sm"
           >
             <svg
@@ -146,7 +125,7 @@ export default function CommandPalette() {
             <span>Twitter</span>
           </CommandItem>
           <CommandItem
-            onSelect={() => runCommand(() => window.open("https://linkedin.com", "_blank"))}
+            onSelect={() => runExternalCommand("https://linkedin.com")}
             className="flex items-center gap-2 text-sm"
           >
             <svg
