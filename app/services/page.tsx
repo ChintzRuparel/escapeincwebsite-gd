@@ -40,7 +40,7 @@ const ServicesPage = () => {
         <div className="bg-white shadow-md rounded-lg p-6">
           <FaShoppingCart className="text-4xl text-blue-500 mb-4" />
           <h2 className="text-xl font-semibold mb-2">E-commerce Solutions</h2>
-          <p className="text-gray-700 mb-4">We build custom e-commerce solutions tailored to your business needs.</p>
+          <p className="text-gray-700 mb-4">Online store development with payments solution and sales analysis.</p>
           <ul className="space-y-3 mb-6">
             <li className="flex items-start">
               <span className="mr-2 text-green-500">✓</span>
