@@ -104,14 +104,14 @@ export function useProject(id) {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link href="https://github.com" target="_blank">
+              <Link href="https://github.com/Escape-Inc" target="_blank">
                 <Button
                   size="lg"
                   variant="outline"
                   className="border-gray-700 bg-gray-800/50 hover:bg-gray-700/50 text-white h-12 px-6 text-base"
                 >
                   <Github className="mr-2 h-5 w-5" />
-                  Star on GitHub
+                  Check on GitHub
                 </Button>
               </Link>
             </div>
