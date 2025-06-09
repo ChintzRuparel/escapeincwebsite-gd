@@ -22,9 +22,9 @@ const TechnologiesSection = () => {
 
           {/* Technology 3 */}
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold mb-2">Scalable E-commerce Platforms</h3>
+            <h3 className="text-xl font-semibold mb-2">E-commerce Solutions</h3>
             <p className="text-gray-700">
-              We specialize in developing Scalable E-commerce Platforms that are tailored to your business needs.
+              We specialize in developing E-commerce Solutions that are tailored to your business needs.
             </p>
           </div>
 

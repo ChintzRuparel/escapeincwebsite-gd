@@ -2,22 +2,22 @@ const BlogPage = () => {
   // Sample blog posts data (replace with your actual data source)
   const blogPosts = [
     {
-      title: "The Future of Scalable E-commerce Platforms",
-      tags: ["Scalable E-commerce Platforms", "Technology", "Innovation"],
+      title: "The Future of E-commerce Solutions",
+      tags: ["E-commerce Solutions", "Technology", "Innovation"],
       content:
-        "Explore the latest trends and innovations in Scalable E-commerce Platforms. Learn how these platforms are transforming the online retail landscape.",
+        "Explore the latest trends and innovations in E-commerce Solutions. Learn how these platforms are transforming the online retail landscape.",
     },
     {
-      title: "Choosing the Right Scalable E-commerce Platforms for Your Business",
-      tags: ["Scalable E-commerce Platforms", "Business", "Strategy"],
+      title: "Choosing the Right E-commerce Solutions for Your Business",
+      tags: ["E-commerce Solutions", "Business", "Strategy"],
       content:
-        "A comprehensive guide to selecting the best Scalable E-commerce Platforms for your specific business needs. Consider factors like scalability, features, and cost.",
+        "A comprehensive guide to selecting the best E-commerce Solutions for your specific business needs. Consider factors like scalability, features, and cost.",
     },
     {
-      title: "Optimizing Your Scalable E-commerce Platforms for Maximum Conversions",
-      tags: ["Scalable E-commerce Platforms", "Marketing", "Optimization"],
+      title: "Optimizing Your E-commerce Solutions for Maximum Conversions",
+      tags: ["E-commerce Solutions", "Marketing", "Optimization"],
       content:
-        "Discover proven strategies to optimize your Scalable E-commerce Platforms and increase your conversion rates. Implement techniques like A/B testing and personalized experiences.",
+        "Discover proven strategies to optimize your E-commerce Solutions and increase your conversion rates. Implement techniques like A/B testing and personalized experiences.",
     },
   ]
 

@@ -13,9 +13,9 @@ const AboutPage = () => {
         <div>
           <h2 className="text-2xl font-semibold mb-3">Our Mission</h2>
           <p className="text-gray-700 mb-4">
-            Our mission is to provide innovative and reliable Scalable E-commerce Platforms to businesses of all sizes.
-            We strive to empower our clients to succeed in the digital marketplace by offering cutting-edge technology
-            and exceptional customer support.
+            Our mission is to provide innovative and reliable E-commerce Solutions to businesses of all sizes. We strive
+            to empower our clients to succeed in the digital marketplace by offering cutting-edge technology and
+            exceptional customer support.
           </p>
           <h2 className="text-2xl font-semibold mb-3">Our Vision</h2>
           <p className="text-gray-700 mb-4">

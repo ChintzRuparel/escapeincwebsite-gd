@@ -2,7 +2,7 @@ const HeroSection = () => {
   return (
     <section className="bg-gray-100 py-20">
       <div className="container mx-auto text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Our Scalable E-commerce Platforms</h1>
+        <h1 className="text-4xl font-bold mb-4">Welcome to Our E-commerce Solutions</h1>
         <p className="text-lg text-gray-700 mb-8">
           We provide comprehensive solutions to help you grow your online business.
         </p>

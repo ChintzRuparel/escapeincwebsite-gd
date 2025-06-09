@@ -61,10 +61,10 @@ const navigationItems: NavigationItem[] = [
   },
   {
     id: "ecommerce",
-    label: "Scalable E-commerce Platforms",
+    label: "E-commerce Solutions",
     icon: <LayoutDashboard className="h-4 w-4" />,
     href: "/ecommerce",
-    description: "Explore our scalable e-commerce solutions",
+    description: "Explore our e-commerce solutions",
   },
 ]
 

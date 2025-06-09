@@ -101,8 +101,7 @@ export default function Home() {
         </a>
       </div>
       <p>
-        Welcome to our suite of Scalable E-commerce Platforms. We provide cutting-edge solutions for businesses of all
-        sizes.
+        Welcome to our suite of E-commerce Solutions. We provide cutting-edge solutions for businesses of all sizes.
       </p>
     </main>
   )
