@@ -1,281 +1,109 @@
-"use client"
-
-import { ArrowRight, Globe, Layers, Zap } from "lucide-react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import HeroSection from "@/components/hero-section"
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import TechnologiesSection from "@/components/technologies-section"
+import Image from "next/image"
 
 export default function Home() {
-  const [aboutRef, aboutInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
-
-  const [techRef, techInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
-
-  const [servicesRef, servicesInView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
-
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
-  }
-
   return (
-    <div className="flex flex-col bg-gray-900">
-      <HeroSection />
-
-      {/* About Section */}
-      <section className="py-20 px-4 md:px-6 relative bg-gray-900" ref={aboutRef}>
-        <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
-        <div className="container mx-auto max-w-6xl relative">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6 }}
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
+          Get started by editing&nbsp;
+          <code className="font-mono font-bold">app/page.tsx</code>
+        </p>
+        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
+          <a
+            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
+            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-white">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-                // About
-              </span>{" "}
-              Escape Inc.
-            </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-mono">
-              A full-stack web development company specializing in robust, scalable, and user-centric web applications.
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-            variants={container}
-            initial="hidden"
-            animate={aboutInView ? "show" : "hidden"}
-          >
-            <motion.div variants={item}>
-              <Card className="card-tech h-full">
-                <CardHeader className="pb-2">
-                  <Globe className="h-10 w-10 text-cyan-400 mb-2" />
-                  <CardTitle className="text-white">Web Solutions</CardTitle>
-                </CardHeader>
-                <CardContent className="text-gray-300 font-mono text-sm">
-                  <p>
-                    Delivering exceptional digital experiences tailored to clients' needs, enhancing online presence.
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div variants={item}>
-              <Card className="card-tech h-full">
-                <CardHeader className="pb-2">
-                  <Layers className="h-10 w-10 text-cyan-400 mb-2" />
-                  <CardTitle className="text-white">Scalable Architecture</CardTitle>
-                </CardHeader>
-                <CardContent className="text-gray-300 font-mono text-sm">
-                  <p>Building robust applications that grow with your business and adapt to changing requirements.</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            <motion.div variants={item}>
-              <Card className="card-tech h-full">
-                <CardHeader className="pb-2">
-                  <Zap className="h-10 w-10 text-cyan-400 mb-2" />
-                  <CardTitle className="text-white">Fast Deployment</CardTitle>
-                </CardHeader>
-                <CardContent className="text-gray-300 font-mono text-sm">
-                  <p>Quick website deployment with GitHub integration, perfect for businesses of all sizes.</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </motion.div>
+            By <Image src="/vercel.svg" alt="Vercel Logo" className="dark:invert" width={100} height={24} priority />
+          </a>
         </div>
-      </section>
+      </div>
 
-      {/* Technologies Section */}
-      <section className="py-20 px-4 md:px-6 relative bg-gray-900" ref={techRef}>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-900/10 to-transparent"></div>
-        <div className="container mx-auto max-w-6xl relative">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={techInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-white">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-                // Technologies
-              </span>{" "}
-              We Use
-            </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-mono">
-              We leverage cutting-edge technologies to build modern, efficient, and scalable web applications.
-            </p>
-          </motion.div>
+      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-900 after:via-[#00c6ff] after:blur-xl after:content-[''] dark:before:bg-gradient-radial dark:before:from-black dark:before:to-transparent dark:after:from-[#007cf0] dark:after:via-[#00df9a] dark:after:opacity-40 before:lg:h-[360px]">
+        <Image
+          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
+          src="/next.svg"
+          alt="Next.js Logo"
+          width={180}
+          height={37}
+          priority
+        />
+      </div>
 
-          <TechnologiesSection />
-        </div>
-      </section>
+      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
+        <a
+          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2 className={`mb-3 text-2xl font-semibold`}>
+            Docs{" "}
+            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+              -&gt;
+            </span>
+          </h2>
+          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
+            Find in-depth information about Next.js features and&nbsp;API.
+          </p>
+        </a>
 
-      {/* Services Section */}
-      <section className="py-20 px-4 md:px-6 relative bg-gray-900" ref={servicesRef}>
-        <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
-        <div className="container mx-auto max-w-6xl relative">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={servicesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-white">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">// Our</span>{" "}
-              Services
-            </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-mono">
-              Comprehensive web development solutions tailored to your specific needs.
-            </p>
-          </motion.div>
+        <a
+          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2 className={`mb-3 text-2xl font-semibold`}>
+            Learn{" "}
+            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+              -&gt;
+            </span>
+          </h2>
+          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
+            Learn about Next.js in an interactive course with&nbsp;quizzes!
+          </p>
+        </a>
 
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-            variants={container}
-            initial="hidden"
-            animate={servicesInView ? "show" : "hidden"}
-          >
-            <motion.div variants={item}>
-              <Card className="card-tech overflow-hidden h-full">
-                <div className="h-1 bg-gradient-to-r from-cyan-500 to-blue-500"></div>
-                <CardHeader>
-                  <CardTitle className="text-white">Static Website Deployment</CardTitle>
-                  <CardDescription className="text-gray-400 font-mono">With 3-year domain support</CardDescription>
-                </CardHeader>
-                <CardContent className="text-gray-300 font-mono text-sm">
-                  <ul className="space-y-2">
-                    <li className="flex items-start">
-                      <ArrowRight className="h-5 w-5 text-cyan-400 mr-2 shrink-0" />
-                      <span>Ideal for small businesses & portfolios</span>
-                    </li>
-                    <li className="flex items-start">
-                      <ArrowRight className="h-5 w-5 text-cyan-400 mr-2 shrink-0" />
-                      <span>Highly cost-effective solution</span>
-                    </li>
-                    <li className="flex items-start">
-                      <ArrowRight className="h-5 w-5 text-cyan-400 mr-2 shrink-0" />
-                      <span>Quick deployment timeframe</span>
-                    </li>
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Link href="/enquiry" className="w-full">
-                    <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-none font-mono">
-                      Get a Quote
-                    </Button>
-                  </Link>
-                </CardFooter>
-              </Card>
-            </motion.div>
+        <a
+          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2 className={`mb-3 text-2xl font-semibold`}>
+            Templates{" "}
+            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+              -&gt;
+            </span>
+          </h2>
+          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
+            Discover and deploy boilerplate example Next.js&nbsp;projects.
+          </p>
+        </a>
 
-            <motion.div variants={item}>
-              <Card className="card-tech overflow-hidden h-full">
-                <div className="h-1 bg-gradient-to-r from-green-500 to-teal-500"></div>
-                <CardHeader>
-                  <CardTitle className="text-white">E-commerce Solutions</CardTitle>
-                  <CardDescription className="text-gray-400 font-mono">Online store development</CardDescription>
-                </CardHeader>
-                <CardContent className="text-gray-300 font-mono text-sm">
-                  <ul className="space-y-2">
-                    <li className="flex items-start">
-                      <ArrowRight className="h-5 w-5 text-green-400 mr-2 shrink-0" />
-                      <span>Perfect for transitioning to e-commerce</span>
-                    </li>
-                    <li className="flex items-start">
-                      <ArrowRight className="h-5 w-5 text-green-400 mr-2 shrink-0" />
-                      <span>Inventory & payment integration</span>
-                    </li>
-                    <li className="flex items-start">
-                      <ArrowRight className="h-5 w-5 text-green-400 mr-2 shrink-0" />
-                      <span>First-rate customer support</span>
-                    </li>
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Link href="/enquiry" className="w-full">
-                    <Button className="w-full bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600 text-white border-none font-mono">
-                      Get a Quote
-                    </Button>
-                  </Link>
-                </CardFooter>
-              </Card>
-            </motion.div>
-
-            <motion.div variants={item}>
-              <Card className="card-tech overflow-hidden h-full">
-                <div className="h-1 bg-gradient-to-r from-purple-500 to-pink-500"></div>
-                <CardHeader>
-                  <CardTitle className="text-white">Full Stack Development</CardTitle>
-                  <CardDescription className="text-gray-400 font-mono">Complete web solution</CardDescription>
-                </CardHeader>
-                <CardContent className="text-gray-300 font-mono text-sm">
-                  <ul className="space-y-2">
-                    <li className="flex items-start">
-                      <ArrowRight className="h-5 w-5 text-purple-400 mr-2 shrink-0" />
-                      <span>For tech-heavy, feature-rich platforms</span>
-                    </li>
-                    <li className="flex items-start">
-                      <ArrowRight className="h-5 w-5 text-purple-400 mr-2 shrink-0" />
-                      <span>Full-stack development</span>
-                    </li>
-                    <li className="flex items-start">
-                      <ArrowRight className="h-5 w-5 text-purple-400 mr-2 shrink-0" />
-                      <span>API development and integration</span>
-                    </li>
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Link href="/enquiry" className="w-full">
-                    <Button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white border-none font-mono">
-                      Get a Quote
-                    </Button>
-                  </Link>
-                </CardFooter>
-              </Card>
-            </motion.div>
-          </motion.div>
-
-          <div className="mt-12 text-center">
-            <Link href="/services">
-              <Button
-                variant="outline"
-                size="lg"
-                className="group border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 font-mono"
-              >
-                View All Services
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-    </div>
+        <a
+          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2 className={`mb-3 text-2xl font-semibold`}>
+            Deploy{" "}
+            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+              -&gt;
+            </span>
+          </h2>
+          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
+            Instantly deploy your Next.js site to a shareable URL with&nbsp;Vercel.
+          </p>
+        </a>
+      </div>
+      <p>
+        Welcome to our suite of Scalable E-commerce Platforms. We provide cutting-edge solutions for businesses of all
+        sizes.
+      </p>
+    </main>
   )
 }

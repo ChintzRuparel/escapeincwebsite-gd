@@ -59,6 +59,13 @@ const navigationItems: NavigationItem[] = [
     href: "/enquiry",
     description: "Get in touch with us",
   },
+  {
+    id: "ecommerce",
+    label: "Scalable E-commerce Platforms",
+    icon: <LayoutDashboard className="h-4 w-4" />,
+    href: "/ecommerce",
+    description: "Explore our scalable e-commerce solutions",
+  },
 ]
 
 export default function CommandPalette() {

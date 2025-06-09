@@ -89,7 +89,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/services" className="text-gray-400 hover:text-cyan-400 transition-colors">
-                  Shopify Store
+                  Scalable E-commerce Platforms
                 </Link>
               </li>
               <li>
