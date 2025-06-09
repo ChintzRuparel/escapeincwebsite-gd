@@ -17,16 +17,16 @@ const ServicesPage = () => {
           <FaCode className="text-4xl text-blue-500 mb-4" />
           <h2 className="text-xl font-semibold mb-2">Static Website Deployment</h2>
           <p className="text-gray-700 mb-4">We offer fast and reliable static website deployment services.</p>
-          <ul className="space-y-2 mb-6">
-            <li className="flex items-center">
+          <ul className="space-y-3 mb-6">
+            <li className="flex items-start">
               <span className="mr-2 text-green-500">✓</span>
               Fast and reliable deployment
             </li>
-            <li className="flex items-center">
+            <li className="flex items-start">
               <span className="mr-2 text-green-500">✓</span>
               Optimized for performance
             </li>
-            <li className="flex items-center">
+            <li className="flex items-start">
               <span className="mr-2 text-green-500">✓</span>
               Secure and scalable infrastructure
             </li>
@@ -41,16 +41,16 @@ const ServicesPage = () => {
           <FaShoppingCart className="text-4xl text-blue-500 mb-4" />
           <h2 className="text-xl font-semibold mb-2">E-commerce Solutions</h2>
           <p className="text-gray-700 mb-4">We build custom e-commerce solutions tailored to your business needs.</p>
-          <ul className="space-y-2 mb-6">
-            <li className="flex items-center">
+          <ul className="space-y-3 mb-6">
+            <li className="flex items-start">
               <span className="mr-2 text-green-500">✓</span>
               Custom storefront design
             </li>
-            <li className="flex items-center">
+            <li className="flex items-start">
               <span className="mr-2 text-green-500">✓</span>
               Secure payment gateway integration
             </li>
-            <li className="flex items-center">
+            <li className="flex items-start">
               <span className="mr-2 text-green-500">✓</span>
               Inventory management system
             </li>
@@ -65,16 +65,16 @@ const ServicesPage = () => {
           <FaServer className="text-4xl text-blue-500 mb-4" />
           <h2 className="text-xl font-semibold mb-2">Full Stack Development</h2>
           <p className="text-gray-700 mb-4">End-to-end web application development from front-end to back-end.</p>
-          <ul className="space-y-2 mb-6">
-            <li className="flex items-center">
+          <ul className="space-y-3 mb-6">
+            <li className="flex items-start">
               <span className="mr-2 text-green-500">✓</span>
               Front-end development with React
             </li>
-            <li className="flex items-center">
+            <li className="flex items-start">
               <span className="mr-2 text-green-500">✓</span>
               Back-end development with Node.js
             </li>
-            <li className="flex items-center">
+            <li className="flex items-start">
               <span className="mr-2 text-green-500">✓</span>
               Database design and management
             </li>
