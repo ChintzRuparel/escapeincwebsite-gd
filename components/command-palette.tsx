@@ -1,194 +1,196 @@
 "use client"
 
-import { useEffect } from "react"
-import {
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-} from "@/components/ui/command"
-import {
-  Code2,
-  FileCode,
-  Github,
-  Home,
-  Info,
-  LayoutDashboard,
-  Mail,
-  PanelRight,
-  ShoppingCart,
-  Timer,
-} from "lucide-react"
+import type React from "react"
+
+import { useEffect, useState } from "react"
+import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Home, Info, LayoutDashboard, Timer, PanelRight, Mail, Search } from "lucide-react"
 import { useCommandMenu } from "@/components/command-menu-provider"
+
+interface NavigationItem {
+  id: string
+  label: string
+  icon: React.ReactNode
+  href: string
+  description?: string
+}
+
+const navigationItems: NavigationItem[] = [
+  {
+    id: "home",
+    label: "Home",
+    icon: <Home className="h-4 w-4" />,
+    href: "/",
+    description: "Go to homepage",
+  },
+  {
+    id: "about",
+    label: "About",
+    icon: <Info className="h-4 w-4" />,
+    href: "/about",
+    description: "Learn more about us",
+  },
+  {
+    id: "services",
+    label: "Services",
+    icon: <LayoutDashboard className="h-4 w-4" />,
+    href: "/services",
+    description: "View our services",
+  },
+  {
+    id: "timeline",
+    label: "Timeline",
+    icon: <Timer className="h-4 w-4" />,
+    href: "/timeline",
+    description: "View our timeline",
+  },
+  {
+    id: "blog",
+    label: "Blog",
+    icon: <PanelRight className="h-4 w-4" />,
+    href: "/blog",
+    description: "Read our blog posts",
+  },
+  {
+    id: "contact",
+    label: "Contact",
+    icon: <Mail className="h-4 w-4" />,
+    href: "/enquiry",
+    description: "Get in touch with us",
+  },
+]
 
 export default function CommandPalette() {
   const { open, setOpen } = useCommandMenu()
+  const [searchQuery, setSearchQuery] = useState("")
+  const [selectedIndex, setSelectedIndex] = useState(0)
 
+  const filteredItems = navigationItems.filter(
+    (item) =>
+      item.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.description?.toLowerCase().includes(searchQuery.toLowerCase()),
+  )
+
+  const handleNavigation = (href: string) => {
+    console.log("Navigating to:", href) // Debug log
+    setOpen(false)
+    setSearchQuery("")
+    setSelectedIndex(0)
+
+    // Use window.location for reliable navigation
+    window.location.href = href
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    switch (e.key) {
+      case "ArrowDown":
+        e.preventDefault()
+        setSelectedIndex((prev) => (prev < filteredItems.length - 1 ? prev + 1 : 0))
+        break
+      case "ArrowUp":
+        e.preventDefault()
+        setSelectedIndex((prev) => (prev > 0 ? prev - 1 : filteredItems.length - 1))
+        break
+      case "Enter":
+        e.preventDefault()
+        if (filteredItems[selectedIndex]) {
+          handleNavigation(filteredItems[selectedIndex].href)
+        }
+        break
+      case "Escape":
+        e.preventDefault()
+        setOpen(false)
+        setSearchQuery("")
+        setSelectedIndex(0)
+        break
+    }
+  }
+
+  // Reset selection when search changes
   useEffect(() => {
-    const down = (e: KeyboardEvent) => {
+    setSelectedIndex(0)
+  }, [searchQuery])
+
+  // Global keyboard shortcut
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
-        setOpen((open) => !open)
+        setOpen((prev) => !prev)
       }
     }
 
-    document.addEventListener("keydown", down)
-    return () => document.removeEventListener("keydown", down)
+    document.addEventListener("keydown", handleGlobalKeyDown)
+    return () => document.removeEventListener("keydown", handleGlobalKeyDown)
   }, [setOpen])
 
+  // Reset state when modal closes
+  useEffect(() => {
+    if (!open) {
+      setSearchQuery("")
+      setSelectedIndex(0)
+    }
+  }, [open])
+
   return (
-    <CommandDialog open={open} onOpenChange={setOpen}>
-      <CommandInput placeholder="Type a command or search..." />
-      <CommandList>
-        <CommandEmpty>No results found.</CommandEmpty>
-        <CommandGroup heading="Navigation">
-          <CommandItem
-            onSelect={() => {
-              setOpen(false)
-              window.location.href = "/"
-            }}
-          >
-            <Home className="mr-2 h-4 w-4" />
-            <span>Home</span>
-          </CommandItem>
-          <CommandItem
-            onSelect={() => {
-              setOpen(false)
-              window.location.href = "/about"
-            }}
-          >
-            <Info className="mr-2 h-4 w-4" />
-            <span>About</span>
-          </CommandItem>
-          <CommandItem
-            onSelect={() => {
-              setOpen(false)
-              window.location.href = "/services"
-            }}
-          >
-            <LayoutDashboard className="mr-2 h-4 w-4" />
-            <span>Services</span>
-          </CommandItem>
-          <CommandItem
-            onSelect={() => {
-              setOpen(false)
-              window.location.href = "/timeline"
-            }}
-          >
-            <Timer className="mr-2 h-4 w-4" />
-            <span>Timeline</span>
-          </CommandItem>
-          <CommandItem
-            onSelect={() => {
-              setOpen(false)
-              window.location.href = "/blog"
-            }}
-          >
-            <PanelRight className="mr-2 h-4 w-4" />
-            <span>Blog</span>
-          </CommandItem>
-          <CommandItem
-            onSelect={() => {
-              setOpen(false)
-              window.location.href = "/enquiry"
-            }}
-          >
-            <Mail className="mr-2 h-4 w-4" />
-            <span>Contact</span>
-          </CommandItem>
-        </CommandGroup>
-        <CommandSeparator />
-        <CommandGroup heading="Services">
-          <CommandItem
-            onSelect={() => {
-              setOpen(false)
-              window.location.href = "/services#static"
-            }}
-          >
-            <FileCode className="mr-2 h-4 w-4" />
-            <span>Static Website</span>
-          </CommandItem>
-          <CommandItem
-            onSelect={() => {
-              setOpen(false)
-              window.location.href = "/services#shopify"
-            }}
-          >
-            <ShoppingCart className="mr-2 h-4 w-4" />
-            <span>Shopify Store</span>
-          </CommandItem>
-          <CommandItem
-            onSelect={() => {
-              setOpen(false)
-              window.location.href = "/services#fullstack"
-            }}
-          >
-            <Code2 className="mr-2 h-4 w-4" />
-            <span>Full Stack Website</span>
-          </CommandItem>
-        </CommandGroup>
-        <CommandSeparator />
-        <CommandGroup heading="Social">
-          <CommandItem
-            onSelect={() => {
-              setOpen(false)
-              window.open("https://github.com", "_blank")
-            }}
-          >
-            <Github className="mr-2 h-4 w-4" />
-            <span>GitHub</span>
-          </CommandItem>
-          <CommandItem
-            onSelect={() => {
-              setOpen(false)
-              window.open("https://twitter.com", "_blank")
-            }}
-          >
-            <svg
-              className="mr-2 h-4 w-4"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-            </svg>
-            <span>Twitter</span>
-          </CommandItem>
-          <CommandItem
-            onSelect={() => {
-              setOpen(false)
-              window.open("https://linkedin.com", "_blank")
-            }}
-          >
-            <svg
-              className="mr-2 h-4 w-4"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-              <rect width="4" height="12" x="2" y="9" />
-              <circle cx="4" cy="4" r="2" />
-            </svg>
-            <span>LinkedIn</span>
-          </CommandItem>
-        </CommandGroup>
-      </CommandList>
-    </CommandDialog>
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogContent className="p-0 max-w-lg">
+        <div className="flex flex-col">
+          {/* Search Input */}
+          <div className="flex items-center border-b px-3">
+            <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
+            <Input
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Type a command or search..."
+              className="flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+              autoFocus
+            />
+          </div>
+
+          {/* Navigation Items */}
+          <div className="max-h-[300px] overflow-y-auto">
+            {filteredItems.length === 0 ? (
+              <div className="py-6 text-center text-sm text-muted-foreground">No results found.</div>
+            ) : (
+              <div className="p-2">
+                <div className="mb-2 px-2 text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                  Navigation
+                </div>
+                {filteredItems.map((item, index) => (
+                  <button
+                    key={item.id}
+                    onClick={() => handleNavigation(item.href)}
+                    className={`w-full flex items-center gap-3 px-3 py-2 text-sm rounded-md transition-colors text-left ${
+                      index === selectedIndex
+                        ? "bg-accent text-accent-foreground"
+                        : "hover:bg-accent hover:text-accent-foreground"
+                    }`}
+                    onMouseEnter={() => setSelectedIndex(index)}
+                  >
+                    {item.icon}
+                    <div className="flex flex-col">
+                      <span className="font-medium">{item.label}</span>
+                      {item.description && <span className="text-xs text-muted-foreground">{item.description}</span>}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Footer */}
+          <div className="border-t px-3 py-2 text-xs text-muted-foreground">
+            Press{" "}
+            <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
+              <span className="text-xs">⌘</span>K
+            </kbd>{" "}
+            to open • Use arrow keys to navigate • Press Enter to select
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
   )
 }
