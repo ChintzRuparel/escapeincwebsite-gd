@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Code, Database, Wrench, ArrowRight, Check } from "lucide-react"
@@ -71,12 +70,6 @@ export default function TechnologySelector() {
       category: "backend",
       description: "JavaScript runtime built on Chrome's V8 engine",
       color: "from-green-600 to-green-700",
-    },
-    {
-      name: "Express",
-      category: "backend",
-      description: "Fast, unopinionated web framework for Node.js",
-      color: "from-gray-600 to-gray-700",
     },
     {
       name: "Django",
