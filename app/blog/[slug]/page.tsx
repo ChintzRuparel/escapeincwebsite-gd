@@ -710,24 +710,6 @@ export default function BlogPostPage() {
                 className="prose prose-invert max-w-none"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
-
-              <div className="mt-12 pt-8 border-t border-gray-800">
-                <h3 className="text-xl font-bold text-white mb-4">Share this article</h3>
-                <div className="flex space-x-4">
-                  <Button variant="outline" size="icon" className="border-gray-700 text-gray-300 hover:bg-gray-800">
-                    <Twitter className="h-5 w-5" />
-                    <span className="sr-only">Share on Twitter</span>
-                  </Button>
-                  <Button variant="outline" size="icon" className="border-gray-700 text-gray-300 hover:bg-gray-800">
-                    <Linkedin className="h-5 w-5" />
-                    <span className="sr-only">Share on LinkedIn</span>
-                  </Button>
-                  <Button variant="outline" size="icon" className="border-gray-700 text-gray-300 hover:bg-gray-800">
-                    <Github className="h-5 w-5" />
-                    <span className="sr-only">Share on GitHub</span>
-                  </Button>
-                </div>
-              </div>
             </div>
 
             <div className="space-y-8">
