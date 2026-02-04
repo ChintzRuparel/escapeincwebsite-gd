@@ -45,22 +45,22 @@ export default function Home() {
       <HeroSection />
 
       {/* About Section */}
-      <section className="py-20 px-4 md:px-6 relative bg-gray-900" ref={aboutRef}>
+      <section className="py-12 md:py-16 lg:py-20 px-4 md:px-6 relative bg-gray-900" ref={aboutRef}>
         <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
         <div className="container mx-auto max-w-6xl relative">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={aboutInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-3 md:mb-4 text-white">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
                 // About
               </span>{" "}
               Escape Inc.
             </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-mono">
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-mono px-4">
               A full-stack web development company specializing in robust, scalable, and user-centric web applications.
             </p>
           </motion.div>
@@ -113,22 +113,22 @@ export default function Home() {
       </section>
 
       {/* Technologies Section */}
-      <section className="py-20 px-4 md:px-6 relative bg-gray-900" ref={techRef}>
+      <section className="py-12 md:py-16 lg:py-20 px-4 md:px-6 relative bg-gray-900" ref={techRef}>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-900/10 to-transparent"></div>
         <div className="container mx-auto max-w-6xl relative">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={techInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-3 md:mb-4 text-white">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
                 // Technologies
               </span>{" "}
               We Use
             </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-mono">
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-mono px-4">
               We leverage cutting-edge technologies to build modern, efficient, and scalable web applications.
             </p>
           </motion.div>
@@ -138,20 +138,20 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 px-4 md:px-6 relative bg-gray-900" ref={servicesRef}>
+      <section className="py-12 md:py-16 lg:py-20 px-4 md:px-6 relative bg-gray-900" ref={servicesRef}>
         <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
         <div className="container mx-auto max-w-6xl relative">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={servicesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-3 md:mb-4 text-white">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">// Our</span>{" "}
               Services
             </h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-mono">
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-mono px-4">
               Comprehensive web development solutions tailored to your specific needs.
             </p>
           </motion.div>

@@ -35,16 +35,16 @@ const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="py-20 px-4 md:px-6 bg-gray-900 text-white">
+      <section className="py-12 md:py-16 lg:py-20 px-4 md:px-6 bg-gray-900 text-white">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div>
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">Our Blog</h1>
-              <p className="text-lg md:text-xl text-gray-300 mb-8">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6">Our Blog</h1>
+              <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 md:mb-8">
                 Insights, tips, and updates from the Escape Inc. team on web development, design, and digital strategy.
               </p>
             </div>
-            <div className="relative">
+            <div className="relative hidden lg:block">
               <CodeEditor code={codeSnippet} language="javascript" />
             </div>
           </div>
@@ -52,31 +52,31 @@ const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
       </section>
 
       {/* Search Section */}
-      <section className="py-10 px-4 md:px-6 bg-gray-800 border-b border-gray-700">
+      <section className="py-6 md:py-10 px-4 md:px-6 bg-gray-800 border-b border-gray-700">
         <div className="container mx-auto max-w-6xl">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            <div className="flex items-center gap-4 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto">
+          <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
+            <div className="flex items-center gap-2 md:gap-4 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto scrollbar-hide">
               <Button
                 variant="outline"
-                className="rounded-full border-gray-700 bg-gray-800 text-gray-300 hover:bg-gray-700"
+                className="rounded-full border-gray-700 bg-gray-800 text-gray-300 hover:bg-gray-700 text-xs md:text-sm px-3 md:px-4 py-1.5 md:py-2 whitespace-nowrap"
               >
                 All
               </Button>
               <Button
                 variant="outline"
-                className="rounded-full border-gray-700 bg-gray-800 text-gray-300 hover:bg-gray-700"
+                className="rounded-full border-gray-700 bg-gray-800 text-gray-300 hover:bg-gray-700 text-xs md:text-sm px-3 md:px-4 py-1.5 md:py-2 whitespace-nowrap"
               >
-                Web Development
+                Development
               </Button>
               <Button
                 variant="outline"
-                className="rounded-full border-gray-700 bg-gray-800 text-gray-300 hover:bg-gray-700"
+                className="rounded-full border-gray-700 bg-gray-800 text-gray-300 hover:bg-gray-700 text-xs md:text-sm px-3 md:px-4 py-1.5 md:py-2 whitespace-nowrap"
               >
                 Design
               </Button>
               <Button
                 variant="outline"
-                className="rounded-full border-gray-700 bg-gray-800 text-gray-300 hover:bg-gray-700"
+                className="rounded-full border-gray-700 bg-gray-800 text-gray-300 hover:bg-gray-700 text-xs md:text-sm px-3 md:px-4 py-1.5 md:py-2 whitespace-nowrap"
               >
                 Business
               </Button>
@@ -86,7 +86,7 @@ const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
                 <Input
                   type="search"
                   placeholder="Search articles..."
-                  className="w-full md:w-[300px] pl-10 bg-gray-800 border-gray-700 text-gray-300"
+                  className="w-full md:w-[300px] pl-10 bg-gray-800 border-gray-700 text-gray-300 text-sm"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -107,33 +107,33 @@ const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
       </section>
 
       {/* Featured Article Section */}
-      <section className="py-20 px-4 md:px-6 bg-gray-900">
+      <section className="py-12 md:py-16 lg:py-20 px-4 md:px-6 bg-gray-900">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 gap-12">
+          <div className="grid grid-cols-1 gap-8 md:gap-12">
             <div>
-              <div className="flex items-center gap-2 text-sm text-gray-400 mb-4">
+              <div className="flex flex-wrap items-center gap-2 text-xs md:text-sm text-gray-400 mb-3 md:mb-4">
                 <span className="bg-blue-900/50 text-blue-300 px-2 py-1 rounded-full text-xs font-medium border border-blue-800">
                   Web Development
                 </span>
                 <div className="flex items-center">
-                  <Calendar className="h-4 w-4 mr-1" />
-                  <span>May 15, 2025</span>
+                  <Calendar className="h-3 w-3 md:h-4 md:w-4 mr-1" />
+                  <span className="text-xs md:text-sm">May 15, 2025</span>
                 </div>
                 <div className="flex items-center">
-                  <Clock className="h-4 w-4 mr-1" />
-                  <span>5 min read</span>
+                  <Clock className="h-3 w-3 md:h-4 md:w-4 mr-1" />
+                  <span className="text-xs md:text-sm">5 min read</span>
                 </div>
               </div>
-              <h2 className="text-3xl font-bold tracking-tight mb-4 text-white">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight mb-3 md:mb-4 text-white">
                 Your Digital Storefront: Why Every Business Needs a Website in 2025
               </h2>
-              <p className="text-gray-300 mb-6">
+              <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-6">
                 In today's digital age, having a website is no longer optional for businesses. It's a necessity. Discover how a professional website transforms your business presence and unlocks 24/7 customer engagement opportunities you can't afford to miss.
               </p>
               <Link href="/blog/importance-of-website">
-                <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-none">
+                <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-none text-sm md:text-base px-4 md:px-6 py-2 md:py-3">
                   Read Article
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-2 h-3 w-3 md:h-4 md:w-4" />
                 </Button>
               </Link>
             </div>
@@ -142,17 +142,17 @@ const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
       </section>
 
       {/* Latest Articles Section */}
-      <section className="py-20 px-4 md:px-6 bg-gray-800">
+      <section className="py-12 md:py-16 lg:py-20 px-4 md:px-6 bg-gray-800">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-white">Latest Articles</h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-3 md:mb-4 text-white">Latest Articles</h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto px-4">
               Stay up-to-date with the latest trends, tips, and insights in web development and digital strategy.
             </p>
           </div>
 
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8"
             variants={container}
             initial="hidden"
             animate="show"

@@ -32,44 +32,44 @@ export default company;`
   return (
     <div className="flex flex-col bg-gray-900">
       {/* Hero Section - Similar to home page */}
-      <section className="py-20 px-4 md:px-6 bg-gray-900 text-white relative overflow-hidden">
+      <section className="py-12 md:py-16 lg:py-20 px-4 md:px-6 bg-gray-900 text-white relative overflow-hidden">
         <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm mb-6">
+          <div className="text-center mb-8 md:mb-12">
+            <div className="inline-flex items-center px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-white/10 border border-white/20 text-xs md:text-sm mb-4 md:mb-6">
               <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
               Building the future of web
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">About Escape Inc.</h1>
-            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6">About Escape Inc.</h1>
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 md:mb-8 max-w-3xl mx-auto px-4">
               We're a team of passionate developers, designers, and strategists dedicated to creating exceptional
               digital experiences that drive business success.
             </p>
           </div>
 
           {/* Stats Grid - Similar to home page */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mb-8 md:mb-12">
             <div className="text-center">
-              <div className="flex items-center justify-center mb-2">
-                <Zap className="h-5 w-5 text-yellow-400 mr-2" />
-                <span className="text-sm text-gray-300">99.9% Uptime</span>
+              <div className="flex flex-col sm:flex-row items-center justify-center mb-2">
+                <Zap className="h-4 w-4 md:h-5 md:w-5 text-yellow-400 sm:mr-2 mb-1 sm:mb-0" />
+                <span className="text-xs md:text-sm text-gray-300">99.9% Uptime</span>
               </div>
             </div>
             <div className="text-center">
-              <div className="flex items-center justify-center mb-2">
-                <Globe className="h-5 w-5 text-blue-400 mr-2" />
-                <span className="text-sm text-gray-300">&lt;50ms Response</span>
+              <div className="flex flex-col sm:flex-row items-center justify-center mb-2">
+                <Globe className="h-4 w-4 md:h-5 md:w-5 text-blue-400 sm:mr-2 mb-1 sm:mb-0" />
+                <span className="text-xs md:text-sm text-gray-300">&lt;50ms Response</span>
               </div>
             </div>
             <div className="text-center">
-              <div className="flex items-center justify-center mb-2">
-                <Shield className="h-5 w-5 text-green-400 mr-2" />
-                <span className="text-sm text-gray-300">Enterprise Security</span>
+              <div className="flex flex-col sm:flex-row items-center justify-center mb-2">
+                <Shield className="h-4 w-4 md:h-5 md:w-5 text-green-400 sm:mr-2 mb-1 sm:mb-0" />
+                <span className="text-xs md:text-sm text-gray-300">Enterprise Security</span>
               </div>
             </div>
             <div className="text-center">
-              <div className="flex items-center justify-center mb-2">
-                <Cloud className="h-5 w-5 text-purple-400 mr-2" />
-                <span className="text-sm text-gray-300">Cloud Native</span>
+              <div className="flex flex-col sm:flex-row items-center justify-center mb-2">
+                <Cloud className="h-4 w-4 md:h-5 md:w-5 text-purple-400 sm:mr-2 mb-1 sm:mb-0" />
+                <span className="text-xs md:text-sm text-gray-300">Cloud Native</span>
               </div>
             </div>
           </div>
@@ -77,13 +77,13 @@ export default company;`
       </section>
 
       {/* Mission Section with Code Snippet */}
-      <section className="py-20 px-4 md:px-6 bg-gray-900 relative">
+      <section className="py-12 md:py-16 lg:py-20 px-4 md:px-6 bg-gray-900 relative">
         <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
         <div className="container mx-auto max-w-6xl relative">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
             <div>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-white">Our Mission</h2>
-              <p className="text-lg text-gray-300 mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 md:mb-6 text-white">Our Mission</h2>
+              <p className="text-base md:text-lg text-gray-300 mb-4 md:mb-6">
                 At Escape Inc., we're committed to enhancing online presence and helping businesses thrive in today's
                 competitive digital landscape through robust, scalable, and user-centric web applications.
               </p>
@@ -106,7 +106,7 @@ export default company;`
                 </div>
               </div>
             </div>
-            <div className="h-[400px]">
+            <div className="h-[300px] md:h-[350px] lg:h-[400px] hidden lg:block">
               <CodeEditor code={aboutCode} language="javascript" />
             </div>
           </div>

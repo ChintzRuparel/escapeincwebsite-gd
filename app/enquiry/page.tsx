@@ -51,11 +51,11 @@ export default function EnquiryPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="py-12 px-4 md:px-6 bg-gray-900 text-white">
+      <section className="py-10 md:py-12 lg:py-16 px-4 md:px-6 bg-gray-900 text-white">
         <div className="container mx-auto max-w-6xl text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">Get in Touch</h1>
-            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6">Get in Touch</h1>
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 md:mb-8 max-w-3xl mx-auto px-4">
               Fill out the form below to discuss your project requirements and how Escape Inc. can help bring your
               vision to life.
             </p>
@@ -64,7 +64,7 @@ export default function EnquiryPage() {
       </section>
 
       {/* Enquiry Form Section */}
-      <section className="py-16 px-4 md:px-6 flex-grow">
+      <section className="py-8 md:py-12 lg:py-16 px-4 md:px-6 flex-grow">
         <div className="container mx-auto max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -72,19 +72,19 @@ export default function EnquiryPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <Card className="border-gray-700 bg-gray-800/50 backdrop-blur-md shadow-lg">
-              <CardHeader>
+              <CardHeader className="px-4 md:px-6 pt-4 md:pt-6">
                 <div className="flex items-center mb-2">
-                  <Terminal className="h-5 w-5 text-cyan-400 mr-2" />
-                  <CardTitle className="text-2xl md:text-3xl text-white">Project Enquiry Form</CardTitle>
+                  <Terminal className="h-4 w-4 md:h-5 md:w-5 text-cyan-400 mr-2" />
+                  <CardTitle className="text-xl sm:text-2xl md:text-3xl text-white">Project Enquiry Form</CardTitle>
                 </div>
-                <CardDescription className="text-gray-300">
+                <CardDescription className="text-sm md:text-base text-gray-300">
                   Please provide details about your project requirements and we'll get back to you within 24 hours.
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="px-4 md:px-6 pb-4 md:pb-6">
                 {!isSubmitted ? (
-                  <form className="space-y-8" onSubmit={handleSubmit}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <form className="space-y-6 md:space-y-8" onSubmit={handleSubmit}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="company-name" className="text-gray-200">
                           Company Name
@@ -141,37 +141,37 @@ export default function EnquiryPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label className="text-gray-200">Service Model</Label>
+                      <Label className="text-sm md:text-base text-gray-200">Service Model</Label>
                       <RadioGroup
                         defaultValue="static"
-                        className="grid grid-cols-1 md:grid-cols-3 gap-4"
+                        className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4"
                         value={formState.serviceModel}
                         onValueChange={(value) => handleSelectChange("serviceModel", value)}
                       >
-                        <div className="flex items-center space-x-2 border border-gray-700 rounded-lg p-4 hover:bg-gray-800 cursor-pointer bg-gray-900">
+                        <div className="flex items-center space-x-2 border border-gray-700 rounded-lg p-3 md:p-4 hover:bg-gray-800 cursor-pointer bg-gray-900">
                           <RadioGroupItem value="static" id="static" className="text-cyan-400" />
-                          <Label htmlFor="static" className="cursor-pointer text-gray-200">
+                          <Label htmlFor="static" className="cursor-pointer text-sm md:text-base text-gray-200">
                             Static Website
                           </Label>
                         </div>
-                        <div className="flex items-center space-x-2 border border-gray-700 rounded-lg p-4 hover:bg-gray-800 cursor-pointer bg-gray-900">
+                        <div className="flex items-center space-x-2 border border-gray-700 rounded-lg p-3 md:p-4 hover:bg-gray-800 cursor-pointer bg-gray-900">
                           <RadioGroupItem value="shopify" id="shopify" className="text-cyan-400" />
-                          <Label htmlFor="shopify" className="cursor-pointer text-gray-200">
+                          <Label htmlFor="shopify" className="cursor-pointer text-sm md:text-base text-gray-200">
                             Shopify Store
                           </Label>
                         </div>
-                        <div className="flex items-center space-x-2 border border-gray-700 rounded-lg p-4 hover:bg-gray-800 cursor-pointer bg-gray-900">
+                        <div className="flex items-center space-x-2 border border-gray-700 rounded-lg p-3 md:p-4 hover:bg-gray-800 cursor-pointer bg-gray-900">
                           <RadioGroupItem value="fullstack" id="fullstack" className="text-cyan-400" />
-                          <Label htmlFor="fullstack" className="cursor-pointer text-gray-200">
+                          <Label htmlFor="fullstack" className="cursor-pointer text-sm md:text-base text-gray-200">
                             Full Stack Website
                           </Label>
                         </div>
                       </RadioGroup>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="backend" className="text-gray-200">
+                        <Label htmlFor="backend" className="text-sm md:text-base text-gray-200">
                           Backend Requirements
                         </Label>
                         <Select
@@ -190,7 +190,7 @@ export default function EnquiryPage() {
                         </Select>
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="meeting" className="text-gray-200">
+                        <Label htmlFor="meeting" className="text-sm md:text-base text-gray-200">
                           Preferred Meeting Time
                         </Label>
                         <Select
@@ -210,14 +210,14 @@ export default function EnquiryPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="requirements" className="text-gray-200">
+                      <Label htmlFor="requirements" className="text-sm md:text-base text-gray-200">
                         Project Requirements
                       </Label>
                       <Textarea
                         id="requirements"
                         name="requirements"
                         placeholder="Please describe your project requirements in detail..."
-                        className="min-h-[150px] bg-gray-900 border-gray-700 text-gray-200 placeholder:text-gray-500"
+                        className="min-h-[120px] md:min-h-[150px] bg-gray-900 border-gray-700 text-gray-200 placeholder:text-gray-500 text-sm md:text-base"
                         value={formState.requirements}
                         onChange={handleChange}
                       />
@@ -226,7 +226,7 @@ export default function EnquiryPage() {
                     <Button
                       type="submit"
                       size="lg"
-                      className="w-full md:w-auto bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600"
+                      className="w-full md:w-auto bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-sm md:text-base"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
