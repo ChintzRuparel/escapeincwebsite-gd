@@ -1,7 +1,6 @@
 "use client"
 
-import { ArrowRight, Calendar, Clock, User } from "lucide-react"
-import Image from "next/image"
+import { ArrowRight, Calendar, Clock } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -110,10 +109,7 @@ const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
       {/* Featured Article Section */}
       <section className="py-20 px-4 md:px-6 bg-gray-900">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden border border-gray-800">
-              <Image src="/placeholder.svg?height=400&width=600" alt="Featured Article" fill className="object-cover" />
-            </div>
+          <div className="grid grid-cols-1 gap-12">
             <div>
               <div className="flex items-center gap-2 text-sm text-gray-400 mb-4">
                 <span className="bg-blue-900/50 text-blue-300 px-2 py-1 rounded-full text-xs font-medium border border-blue-800">
@@ -129,20 +125,11 @@ const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
                 </div>
               </div>
               <h2 className="text-3xl font-bold tracking-tight mb-4 text-white">
-                The Importance of Having a Website for Your Business
+                Your Digital Storefront: Why Every Business Needs a Website in 2025
               </h2>
               <p className="text-gray-300 mb-6">
-                In today's digital age, having a website is no longer optional for businesses. It's a necessity. Learn
-                why having a website is crucial for your business success and how it can help you reach more customers.
+                In today's digital age, having a website is no longer optional for businesses. It's a necessity. Discover how a professional website transforms your business presence and unlocks 24/7 customer engagement opportunities you can't afford to miss.
               </p>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="flex items-center gap-2">
-                  <div className="relative w-10 h-10 rounded-full overflow-hidden bg-gray-800 border border-gray-700">
-                    <Image src="/placeholder.svg?height=40&width=40" alt="Author" fill className="object-cover" />
-                  </div>
-                  <span className="font-medium text-gray-300">Alex Johnson</span>
-                </div>
-              </div>
               <Link href="/blog/importance-of-website">
                 <Button className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-none">
                   Read Article
@@ -170,78 +157,85 @@ const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
             initial="hidden"
             animate="show"
           >
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <motion.div key={i} variants={item}>
+            {[
+              {
+                id: 1,
+                slug: "quick-deployment",
+                category: "Development",
+                categoryColor: "bg-blue-900/50 text-blue-300 border-blue-800",
+                date: "May 11, 2025",
+                title: "Launch Fast or Get Left Behind: The Speed Advantage in Web Development",
+                description: "In a world where every day counts, discover why rapid deployment isn't just nice to have—it's your competitive weapon.",
+              },
+              {
+                id: 2,
+                slug: "social-media-tricks",
+                category: "Business",
+                categoryColor: "bg-purple-900/50 text-purple-300 border-purple-800",
+                date: "May 12, 2025",
+                title: "5 Powerful Social Media Hacks That Drive Real Business Results",
+                description: "Stop posting into the void. Learn actionable strategies that turn casual scrollers into engaged customers and brand advocates.",
+              },
+              {
+                id: 3,
+                slug: "github-deployment",
+                category: "Development",
+                categoryColor: "bg-blue-900/50 text-blue-300 border-blue-800",
+                date: "May 13, 2025",
+                title: "From Code to Live Site in Minutes: The GitHub Deployment Revolution",
+                description: "Modern deployment shouldn't be complicated. Explore how GitHub Actions automates your workflow and eliminates deployment headaches forever.",
+              },
+              {
+                id: 4,
+                slug: "tech-stack-guide",
+                category: "Development",
+                categoryColor: "bg-blue-900/50 text-blue-300 border-blue-800",
+                date: "May 14, 2025",
+                title: "Choosing Your Weapons: The Ultimate Tech Stack Decision Guide",
+                description: "React or Vue? SQL or NoSQL? Make informed decisions that set your project up for long-term success with our comprehensive framework.",
+              },
+              {
+                id: 5,
+                slug: "responsive-design",
+                category: "Design",
+                categoryColor: "bg-green-900/50 text-green-300 border-green-800",
+                date: "May 15, 2025",
+                title: "Mobile-First Design Isn't Optional Anymore: A Modern Approach",
+                description: "With mobile traffic dominating, learn the essential principles and practical techniques for creating truly responsive experiences.",
+              },
+              {
+                id: 6,
+                slug: "performance-optimization",
+                category: "Development",
+                categoryColor: "bg-blue-900/50 text-blue-300 border-blue-800",
+                date: "May 16, 2025",
+                title: "The Need for Speed: Proven Tactics to Supercharge Your Website Performance",
+                description: "Every millisecond matters. Discover battle-tested optimization strategies that reduce load times and boost user satisfaction.",
+              },
+            ].map((article) => (
+              <motion.div key={article.id} variants={item}>
                 <Card className="border-gray-700 bg-gray-900 hover:shadow-md hover:shadow-cyan-500/5 transition-shadow overflow-hidden">
-                  <div className="relative h-48 w-full border-b border-gray-800">
-                    <Image
-                      src={`/placeholder.svg?height=200&width=400&text=Article+${i}`}
-                      alt={`Article ${i}`}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
                   <CardHeader className="pb-2">
                     <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
-                      <span
-                        className={`${
-                          i % 3 === 0
-                            ? "bg-green-900/50 text-green-300 border-green-800"
-                            : i % 3 === 1
-                              ? "bg-blue-900/50 text-blue-300 border-blue-800"
-                              : "bg-purple-900/50 text-purple-300 border-purple-800"
-                        } px-2 py-1 rounded-full text-xs font-medium border`}
-                      >
-                        {i % 3 === 0 ? "Design" : i % 3 === 1 ? "Development" : "Business"}
+                      <span className={`${article.categoryColor} px-2 py-1 rounded-full text-xs font-medium border`}>
+                        {article.category}
                       </span>
                       <div className="flex items-center">
                         <Calendar className="h-4 w-4 mr-1" />
-                        <span>May {i + 10}, 2025</span>
+                        <span>{article.date}</span>
                       </div>
                     </div>
-                    <CardTitle className="text-xl text-white">
-                      {i === 1
-                        ? "Why Quick Website Deployment Matters"
-                        : i === 2
-                          ? "Social Media Quick Tricks for Businesses"
-                          : i === 3
-                            ? "The Benefits of Using GitHub for Deployment"
-                            : i === 4
-                              ? "Choosing the Right Tech Stack for Your Project"
-                              : i === 5
-                                ? "Responsive Design Best Practices"
-                                : "Optimizing Website Performance"}
-                    </CardTitle>
-                    <CardDescription className="text-gray-400">
-                      {i === 1
-                        ? "Learn why deploying your website quickly can give you a competitive edge."
-                        : i === 2
-                          ? "Simple social media strategies that can boost your online presence."
-                          : i === 3
-                            ? "Discover the advantages of using GitHub for website deployment."
-                            : i === 4
-                              ? "Tips for selecting the right technologies for your web project."
-                              : i === 5
-                                ? "Ensure your website looks great on all devices with these tips."
-                                : "Techniques to improve your website's loading speed and performance."}
-                    </CardDescription>
+                    <CardTitle className="text-xl text-white">{article.title}</CardTitle>
+                    <CardDescription className="text-gray-400">{article.description}</CardDescription>
                   </CardHeader>
                   <CardFooter className="pt-0">
-                    <div className="flex items-center justify-between w-full">
-                      <div className="flex items-center gap-2">
-                        <User className="h-4 w-4 text-gray-400" />
-                        <span className="text-sm text-gray-400">
-                          {i % 3 === 0 ? "Sarah Chen" : i % 3 === 1 ? "Alex Johnson" : "Michael Rodriguez"}
-                        </span>
-                      </div>
-                      <Link
-                        href={`/blog/article-${i}`}
-                        className="text-cyan-400 hover:text-cyan-300 text-sm flex items-center"
-                      >
-                        Read More
-                        <ArrowRight className="ml-1 h-3 w-3" />
-                      </Link>
-                    </div>
+                    <Link
+                      href={`/blog/${article.slug}`}
+                      className="text-cyan-400 hover:text-cyan-300 text-sm flex items-center"
+                    >
+                      Read More
+                      <ArrowRight className="ml-1 h-3 w-3" />
+                    </Link>
                   </CardFooter>
                 </Card>
               </motion.div>

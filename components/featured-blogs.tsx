@@ -1,5 +1,4 @@
 import { ArrowRight, Calendar } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -17,14 +16,6 @@ export default function FeaturedBlogs() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Card className="border-none shadow-sm hover:shadow-md transition-shadow overflow-hidden">
-            <div className="relative h-48 w-full">
-              <Image
-                src="/placeholder.svg?height=200&width=400&text=Blog+1"
-                alt="Blog 1"
-                fill
-                className="object-cover"
-              />
-            </div>
             <CardHeader className="pb-2">
               <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                 <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">
@@ -35,10 +26,9 @@ export default function FeaturedBlogs() {
                   <span>May 15, 2025</span>
                 </div>
               </div>
-              <CardTitle className="text-xl">Importance of Having a Website</CardTitle>
+              <CardTitle className="text-xl">Your Digital Storefront: Why Every Business Needs a Website in 2025</CardTitle>
               <CardDescription>
-                Learn why having a website is crucial for your business success and how it can help you reach more
-                customers.
+                Discover how a professional website transforms your business presence and unlocks 24/7 customer engagement opportunities you can't afford to miss.
               </CardDescription>
             </CardHeader>
             <CardFooter>
@@ -50,14 +40,6 @@ export default function FeaturedBlogs() {
           </Card>
 
           <Card className="border-none shadow-sm hover:shadow-md transition-shadow overflow-hidden">
-            <div className="relative h-48 w-full">
-              <Image
-                src="/placeholder.svg?height=200&width=400&text=Blog+2"
-                alt="Blog 2"
-                fill
-                className="object-cover"
-              />
-            </div>
             <CardHeader className="pb-2">
               <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                 <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">
@@ -68,9 +50,9 @@ export default function FeaturedBlogs() {
                   <span>May 12, 2025</span>
                 </div>
               </div>
-              <CardTitle className="text-xl">Social Media Quick Tricks</CardTitle>
+              <CardTitle className="text-xl">5 Powerful Social Media Hacks That Drive Real Business Results</CardTitle>
               <CardDescription>
-                Simple social media strategies that can boost your online presence and engage with your audience.
+                Stop posting into the void. Learn actionable strategies that turn casual scrollers into engaged customers and brand advocates.
               </CardDescription>
             </CardHeader>
             <CardFooter>
@@ -82,14 +64,6 @@ export default function FeaturedBlogs() {
           </Card>
 
           <Card className="border-none shadow-sm hover:shadow-md transition-shadow overflow-hidden">
-            <div className="relative h-48 w-full">
-              <Image
-                src="/placeholder.svg?height=200&width=400&text=Blog+3"
-                alt="Blog 3"
-                fill
-                className="object-cover"
-              />
-            </div>
             <CardHeader className="pb-2">
               <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
                 <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs font-medium">
@@ -100,9 +74,9 @@ export default function FeaturedBlogs() {
                   <span>May 10, 2025</span>
                 </div>
               </div>
-              <CardTitle className="text-xl">GitHub Deployment Benefits</CardTitle>
+              <CardTitle className="text-xl">From Code to Live Site in Minutes: The GitHub Deployment Revolution</CardTitle>
               <CardDescription>
-                Discover the advantages of using GitHub for website deployment and how it can streamline your workflow.
+                Modern deployment shouldn't be complicated. Explore how GitHub Actions automates your workflow and eliminates deployment headaches forever.
               </CardDescription>
             </CardHeader>
             <CardFooter>

@@ -13,7 +13,7 @@ import CodeEditor from "@/components/code-editor"
 // Sample blog data
 const blogPosts = {
   "importance-of-website": {
-    title: "The Importance of Having a Website for Your Business",
+    title: "Your Digital Storefront: Why Every Business Needs a Website in 2025",
     date: "May 15, 2025",
     readTime: "5 min read",
     author: {
@@ -116,7 +116,7 @@ export default Navigation;`,
     ],
   },
   "github-deployment": {
-    title: "The Benefits of Using GitHub for Deployment",
+    title: "From Code to Live Site in Minutes: The GitHub Deployment Revolution",
     date: "May 13, 2025",
     readTime: "4 min read",
     author: {
