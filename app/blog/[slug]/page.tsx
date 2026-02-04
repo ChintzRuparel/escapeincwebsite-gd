@@ -222,7 +222,7 @@ module.exports = {
       
       <h2>5. Track What Actually Works</h2>
       
-      <p>Don't just post and hope. Use analytics to understand what content resonates with your audience. Double down on what works and cut what doesn't. Your time is valuable—spend it on strategies that deliver results.</p>
+      <p>Don't just post and hope. Use analytics to understand what content resonates with your audience. Double down on what works and cut what doesn't. Your time is valuable��spend it on strategies that deliver results.</p>
       
       <p>At Escape Inc., we help businesses develop social media strategies that actually move the needle. Contact us to learn how we can help amplify your online presence.</p>
     `,
@@ -694,23 +694,6 @@ export default function BlogPostPage() {
             </div>
 
             <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">{post.title}</h1>
-
-            <div className="flex items-center gap-4 mb-8">
-              <div className="flex items-center gap-3">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden bg-gray-800 border border-gray-700">
-                  <Image
-                    src={post.author.image || "/placeholder.svg"}
-                    alt={post.author.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div>
-                  <span className="font-medium text-white block">{post.author.name}</span>
-                  <span className="text-sm text-gray-400">{post.author.role}</span>
-                </div>
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>
