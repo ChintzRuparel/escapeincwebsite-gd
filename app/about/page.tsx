@@ -183,7 +183,7 @@ export default company;`
             <TeamMember
               name="Chintan N Ruparel"
               role="Co-Founder"
-              image="/images/chintan-ruparel.jpeg"
+              image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChintanRuparel-4FQR3J2TnRtmV4tfVpNZ6LQ7S2ITTN.jpg"
               skills={["AI", "Finance", "Full-Stack", "Scalable Architecture"]}
               bio="Merging AI, finance, and full-stack engineering to build scalable digital solutions."
               university="New York University, New York"
@@ -192,7 +192,7 @@ export default company;`
             <TeamMember
               name="Esha Shah"
               role="Co-Founder"
-              image="/images/esha-shah.jpeg"
+              image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/EshaShah-cpKTM9eysW1itf7PWZntCKOLYIosfI.jpg"
               skills={["Product Strategy", "UI/UX", "Business Development", "Innovation"]}
               bio="Driving product vision and user experience excellence with a focus on innovative business solutions."
               university="NMIMS University, Mumbai"
@@ -201,7 +201,7 @@ export default company;`
             <TeamMember
               name="Sachi Shah"
               role="Co-Founder"
-              image="/images/sachi-shah.png"
+              image="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SachiShah-PJ7NEjbj61InpFQaV1vZEDfkPuXLJr.jpg"
               skills={["System Architecture", "Data Engineering", "Cloud Infrastructure", "Performance"]}
               bio="Building robust, scalable infrastructure and optimizing system performance for enterprise-grade applications."
               university="Carnegie Mellon University, Pittsburgh"
