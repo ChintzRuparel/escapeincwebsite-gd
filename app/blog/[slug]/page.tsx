@@ -731,20 +731,6 @@ export default function BlogPostPage() {
             </div>
 
             <div className="space-y-8">
-              <Card className="border-gray-700 bg-gray-800/50 backdrop-blur-md overflow-hidden">
-                <div className="p-4">
-                  <h3 className="text-lg font-bold text-white mb-4">Code Example</h3>
-                  <CodeEditor code={post.codeSnippet} language={post.codeSnippet.includes("import") ? "jsx" : "yaml"} />
-                </div>
-              </Card>
-
-              <TerminalWidget
-                title="Terminal Commands"
-                commands={post.terminalCommands}
-                responses={post.terminalResponses}
-                delay={1000}
-              />
-
               <Card className="border-gray-700 bg-gray-800/50 backdrop-blur-md">
                 <div className="p-4">
                   <h3 className="text-lg font-bold text-white mb-4">Related Articles</h3>
