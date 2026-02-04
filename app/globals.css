@@ -227,6 +227,17 @@ html {
   margin-bottom: 0.5em;
 }
 
+/* Hide scrollbar for horizontal scrolling */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 /* Floating animation */
 @keyframes float {
   0% {

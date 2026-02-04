@@ -61,40 +61,40 @@ export default function ServicesPage() {
   return (
     <div className="flex flex-col bg-gray-900 text-white">
       {/* Hero Section - Merged with page background */}
-      <section className="py-20 px-4 md:px-6 relative overflow-hidden">
+      <section className="py-12 md:py-16 lg:py-20 px-4 md:px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-white/5 bg-[size:20px_20px] opacity-20"></div>
         <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="flex items-center gap-2 mb-8">
+          <div className="flex items-center gap-2 mb-6 md:mb-8">
             <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></div>
-            <span className="text-sm font-medium text-gray-300">Crafting tomorrow's web</span>
+            <span className="text-xs sm:text-sm font-medium text-gray-300">Crafting tomorrow's web</span>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div>
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">Our Services</h1>
-              <p className="text-lg md:text-xl text-gray-300 mb-8">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 md:mb-6">Our Services</h1>
+              <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 md:mb-8">
                 Comprehensive web development solutions tailored to your specific needs, helping your business thrive in
                 the digital landscape.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <div className="flex items-center gap-2 bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-full">
+              <div className="flex flex-wrap gap-2 md:gap-4">
+                <div className="flex items-center gap-2 bg-gray-800/50 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full">
                   <div className="h-2 w-2 rounded-full bg-cyan-500"></div>
-                  <span className="text-sm font-medium text-gray-300">⚡ 99.9% Uptime</span>
+                  <span className="text-xs md:text-sm font-medium text-gray-300">⚡ 99.9% Uptime</span>
                 </div>
-                <div className="flex items-center gap-2 bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-full">
+                <div className="flex items-center gap-2 bg-gray-800/50 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full">
                   <div className="h-2 w-2 rounded-full bg-purple-500"></div>
-                  <span className="text-sm font-medium text-gray-300">🚀 &lt;50ms Response Time</span>
+                  <span className="text-xs md:text-sm font-medium text-gray-300">🚀 &lt;50ms Response</span>
                 </div>
-                <div className="flex items-center gap-2 bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-full">
+                <div className="flex items-center gap-2 bg-gray-800/50 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full">
                   <div className="h-2 w-2 rounded-full bg-green-500"></div>
-                  <span className="text-sm font-medium text-gray-300">🔒 Enterprise Security</span>
+                  <span className="text-xs md:text-sm font-medium text-gray-300">🔒 Security</span>
                 </div>
-                <div className="flex items-center gap-2 bg-gray-800/50 backdrop-blur-sm px-4 py-2 rounded-full">
+                <div className="flex items-center gap-2 bg-gray-800/50 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full">
                   <div className="h-2 w-2 rounded-full bg-orange-500"></div>
-                  <span className="text-sm font-medium text-gray-300">☁️ Cloud Native</span>
+                  <span className="text-xs md:text-sm font-medium text-gray-300">☁️ Cloud Native</span>
                 </div>
               </div>
             </div>
-            <div className="relative h-[400px] rounded-xl overflow-hidden border border-gray-800">
+            <div className="relative h-[300px] md:h-[350px] lg:h-[400px] rounded-xl overflow-hidden border border-gray-800 hidden md:block">
               <CodeEditor code={htmlCode} language="html" filename="index.html" />
             </div>
           </div>
@@ -102,12 +102,12 @@ export default function ServicesPage() {
       </section>
 
       {/* Service Models Section */}
-      <section className="py-20 px-4 md:px-6 relative overflow-hidden">
+      <section className="py-12 md:py-16 lg:py-20 px-4 md:px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-white/5 bg-[size:20px_20px] opacity-10"></div>
         <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Service Models</h2>
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+          <div className="text-center mb-10 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-3 md:mb-4">Service Models</h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto px-4">
               Choose the service model that best fits your business needs and goals.
             </p>
           </div>

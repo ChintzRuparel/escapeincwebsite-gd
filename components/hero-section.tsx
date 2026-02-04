@@ -38,7 +38,7 @@ export function useProject(id) {
 }`
 
   return (
-    <section className="relative min-h-screen py-12 md:py-20 overflow-hidden bg-gray-900" ref={containerRef}>
+    <section className="relative min-h-[90vh] md:min-h-screen py-16 md:py-20 overflow-hidden bg-gray-900" ref={containerRef}>
       {/* Background elements */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500/10 rounded-full filter blur-3xl"></div>
@@ -47,14 +47,14 @@ export function useProject(id) {
       <motion.div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           <motion.div
-            className="flex flex-col space-y-6 pt-0"
+            className="flex flex-col space-y-4 md:space-y-6 pt-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             {/* Main heading - positioned on the left side */}
             <motion.h1
-              className="text-5xl md:text-7xl font-bold tracking-tight leading-tight text-white"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight text-white"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -63,17 +63,17 @@ export function useProject(id) {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
                 exceptional
               </span>{" "}
-              <br className="hidden md:block" />
+              <br className="hidden sm:block" />
               digital experiences
             </motion.h1>
 
-            <div className="flex items-center space-x-2">
-              <div className="bg-gray-800 border border-gray-700 rounded-full px-4 py-1 text-xs font-mono text-gray-400 flex items-center">
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="bg-gray-800 border border-gray-700 rounded-full px-3 md:px-4 py-1 text-xs font-mono text-gray-400 flex items-center">
                 <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-                <span>Crafting tomorrow's web</span>
+                <span className="text-[10px] sm:text-xs">Crafting tomorrow's web</span>
               </div>
               <div
-                className="bg-gray-800 border border-gray-700 rounded-full px-3 py-1 text-xs font-mono text-gray-400 cursor-pointer hover:bg-gray-700 transition-colors flex items-center"
+                className="hidden sm:flex bg-gray-800 border border-gray-700 rounded-full px-3 py-1 text-xs font-mono text-gray-400 cursor-pointer hover:bg-gray-700 transition-colors items-center"
                 onClick={handleCommandK}
               >
                 <kbd className="px-1.5 py-0.5 bg-gray-700 rounded text-gray-400 text-[10px] font-mono mr-1">⌘</kbd>
@@ -81,7 +81,7 @@ export function useProject(id) {
               </div>
             </div>
 
-            <div className="text-sm font-mono text-cyan-400 mb-2 tracking-wider">
+            <div className="text-xs sm:text-sm font-mono text-cyan-400 mb-2 tracking-wider">
               <TypeAnimation
                 sequence={["> SCALABLE SOLUTIONS", 1000]}
                 wrapper="span"
@@ -90,33 +90,34 @@ export function useProject(id) {
               />
             </div>
 
-            <p className="text-xl md:text-2xl text-gray-300 max-w-md leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-md leading-relaxed">
               Escape Inc. specializes in robust, scalable, and user-centric web applications tailored to your needs.
             </p>
 
-            <div className="flex flex-wrap gap-4 items-center pt-4">
-              <Link href="/enquiry">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4 items-stretch sm:items-center pt-4">
+              <Link href="/enquiry" className="w-full sm:w-auto">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-none h-12 px-6 text-base"
+                  className="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-none h-11 md:h-12 px-5 md:px-6 text-sm md:text-base"
                 >
                   Get Started
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5" />
                 </Button>
               </Link>
-              <Link href="https://github.com/Escape-Inc" target="_blank">
+              <Link href="https://github.com/Escape-Inc" target="_blank" className="w-full sm:w-auto">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-gray-700 bg-gray-800/50 hover:bg-gray-700/50 text-white h-12 px-6 text-base"
+                  className="w-full sm:w-auto border-gray-700 bg-gray-800/50 hover:bg-gray-700/50 text-white h-11 md:h-12 px-5 md:px-6 text-sm md:text-base"
                 >
-                  <Github className="mr-2 h-5 w-5" />
-                  Check on GitHub
+                  <Github className="mr-2 h-4 w-4 md:h-5 md:w-5" />
+                  <span className="hidden sm:inline">Check on GitHub</span>
+                  <span className="sm:hidden">GitHub</span>
                 </Button>
               </Link>
             </div>
 
-            <div className="pt-6 flex flex-wrap gap-6 items-center">
+            <div className="pt-4 md:pt-6 flex flex-wrap gap-4 md:gap-6 items-center">
               {[
                 {
                   icon: <Code className="h-5 w-5 text-cyan-400 group-hover:text-cyan-300 transition-colors" />,
@@ -151,20 +152,20 @@ export function useProject(id) {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4, delay: 0.6 + i * 0.1 }}
-                  className="flex items-center space-x-3 text-gray-300 group cursor-pointer"
+                  className="flex items-center space-x-2 md:space-x-3 text-gray-300 group cursor-pointer"
                 >
                   <div
-                    className={`flex items-center justify-center w-10 h-10 rounded-full border border-gray-700/50 ${item.iconBg} ${item.hoverIconBg} transition-all duration-300 ease-in-out`}
+                    className={`flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full border border-gray-700/50 ${item.iconBg} ${item.hoverIconBg} transition-all duration-300 ease-in-out`}
                   >
                     {item.icon}
                   </div>
                   <div>
                     <div
-                      className={`text-sm font-semibold text-white ${item.textGradient} transition-all duration-300`}
+                      className={`text-xs md:text-sm font-semibold text-white ${item.textGradient} transition-all duration-300`}
                     >
                       {item.text}
                     </div>
-                    <div className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors">{item.desc}</div>
+                    <div className="text-[10px] md:text-xs text-gray-400 group-hover:text-gray-300 transition-colors hidden sm:block">{item.desc}</div>
                   </div>
                 </motion.div>
               ))}
@@ -172,7 +173,7 @@ export function useProject(id) {
           </motion.div>
 
           <motion.div
-            className="relative"
+            className="relative hidden lg:block"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
