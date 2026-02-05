@@ -20,6 +20,15 @@ export default function TechnologiesSection() {
   const [activeCategory, setActiveCategory] = useState<Category>("frontend")
   const [selectedTech, setSelectedTech] = useState<string>("react")
 
+  // Function to handle category changes and auto-select first tech
+  const handleCategoryChange = (category: Category) => {
+    setActiveCategory(category)
+    const firstTechInCategory = technologies.find((tech) => tech.category === category)
+    if (firstTechInCategory) {
+      setSelectedTech(firstTechInCategory.id)
+    }
+  }
+
   const technologies: Technology[] = [
     // Frontend
     {
@@ -214,19 +223,182 @@ async function getData() {
       color: "#339933",
       description: "JavaScript runtime built on Chrome's V8 engine",
       codeSnippet: `import express from 'express';
+
 const app = express();
+
 app.get('/api/users', async (req, res) => {
   const users = await db.getUsers();
   res.json(users);
+});
+
+app.listen(3000, () => {
+  console.log('Server running on port 3000');
 });`,
       language: "javascript",
     },
+    {
+      id: "python",
+      name: "Python",
+      category: "backend",
+      color: "#3776AB",
+      description: "Versatile language for backend and data",
+      codeSnippet: `from flask import Flask, jsonify
 
-    // Add more backend and devops technologies as needed
+app = Flask(__name__)
+
+@app.route('/api/users')
+def get_users():
+    users = db.get_users()
+    return jsonify(users)
+
+if __name__ == '__main__':
+    app.run(debug=True)`,
+      language: "python",
+    },
+    {
+      id: "golang",
+      name: "Go",
+      category: "backend",
+      color: "#00ADD8",
+      description: "Fast, concurrent programming language",
+      codeSnippet: `package main
+
+import (
+    "encoding/json"
+    "net/http"
+)
+
+func getUsersHandler(w http.ResponseWriter, r *http.Request) {
+    users := db.GetUsers()
+    json.NewEncoder(w).Encode(users)
+}
+
+func main() {
+    http.HandleFunc("/api/users", getUsersHandler)
+    http.ListenAndServe(":8080", nil)
+}`,
+      language: "go",
+    },
+    {
+      id: "rust",
+      name: "Rust",
+      category: "backend",
+      color: "#CE412B",
+      description: "Memory-safe systems programming",
+      codeSnippet: `use actix_web::{get, web, App, HttpServer, Result};
+
+#[get("/api/users")]
+async fn get_users() -> Result<web::Json<Vec<User>>> {
+    let users = db::get_users().await?;
+    Ok(web::Json(users))
+}
+
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    HttpServer::new(|| {
+        App::new().service(get_users)
+    })
+    .bind("127.0.0.1:8080")?
+    .run()
+    .await
+}`,
+      language: "rust",
+    },
+    {
+      id: "java",
+      name: "Java",
+      category: "backend",
+      color: "#007396",
+      description: "Enterprise-grade backend development",
+      codeSnippet: `@RestController
+@RequestMapping("/api")
+public class UserController {
+    
+    @Autowired
+    private UserService userService;
+    
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> getUsers() {
+        List<User> users = userService.getAllUsers();
+        return ResponseEntity.ok(users);
+    }
+}`,
+      language: "java",
+    },
+    {
+      id: "csharp",
+      name: "C#",
+      category: "backend",
+      color: "#239120",
+      description: ".NET framework for web applications",
+      codeSnippet: `[ApiController]
+[Route("api/[controller]")]
+public class UsersController : ControllerBase
+{
+    private readonly IUserService _userService;
+
+    [HttpGet]
+    public async Task<IActionResult> GetUsers()
+    {
+        var users = await _userService.GetAllUsersAsync();
+        return Ok(users);
+    }
+}`,
+      language: "csharp",
+    },
+
+    // DevOps technologies
+    {
+      id: "docker",
+      name: "Docker",
+      category: "devops",
+      color: "#2496ED",
+      description: "Containerization platform",
+      codeSnippet: `FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci --only=production
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["node", "server.js"]`,
+      language: "dockerfile",
+    },
+    {
+      id: "kubernetes",
+      name: "Kubernetes",
+      category: "devops",
+      color: "#326CE5",
+      description: "Container orchestration platform",
+      codeSnippet: `apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: app
+        image: myapp:latest
+        ports:
+        - containerPort: 3000`,
+      language: "yaml",
+    },
   ]
 
   const filteredTech = technologies.filter((tech) => tech.category === activeCategory)
-  const currentTech = technologies.find((tech) => tech.id === selectedTech) || technologies[0]
+  const currentTech = technologies.find((tech) => tech.id === selectedTech) || filteredTech[0] || technologies[0]
 
   const whyWeLove = {
     react: [
@@ -264,6 +436,41 @@ app.get('/api/users', async (req, res) => {
       "JavaScript on the server for full-stack development",
       "Non-blocking I/O for high performance",
       "Vast ecosystem with npm packages",
+    ],
+    python: [
+      "Clean syntax and readability",
+      "Extensive libraries for web and data",
+      "Great for rapid prototyping",
+    ],
+    golang: [
+      "Built-in concurrency with goroutines",
+      "Fast compilation and execution",
+      "Simple syntax and strong standard library",
+    ],
+    rust: [
+      "Memory safety without garbage collection",
+      "Zero-cost abstractions for performance",
+      "Growing ecosystem for web services",
+    ],
+    java: [
+      "Platform independence with JVM",
+      "Strong typing and enterprise features",
+      "Mature ecosystem with Spring framework",
+    ],
+    csharp: [
+      "Modern language features and syntax",
+      "Excellent tooling with Visual Studio",
+      "Cross-platform with .NET Core",
+    ],
+    docker: [
+      "Consistent environments across development",
+      "Lightweight and portable containers",
+      "Easy deployment and scaling",
+    ],
+    kubernetes: [
+      "Automated container orchestration",
+      "Self-healing and auto-scaling",
+      "Industry standard for cloud native apps",
     ],
   }
 
@@ -308,7 +515,7 @@ app.get('/api/users', async (req, res) => {
         {/* Category Tabs */}
         <div className="flex space-x-4 mb-4">
           <button
-            onClick={() => setActiveCategory("frontend")}
+            onClick={() => handleCategoryChange("frontend")}
             className={`px-4 py-2 rounded-md transition-colors ${
               activeCategory === "frontend"
                 ? "bg-cyan-500/20 text-cyan-400 border border-cyan-500/50"
@@ -318,7 +525,7 @@ app.get('/api/users', async (req, res) => {
             Frontend
           </button>
           <button
-            onClick={() => setActiveCategory("backend")}
+            onClick={() => handleCategoryChange("backend")}
             className={`px-4 py-2 rounded-md transition-colors ${
               activeCategory === "backend"
                 ? "bg-cyan-500/20 text-cyan-400 border border-cyan-500/50"
@@ -328,7 +535,7 @@ app.get('/api/users', async (req, res) => {
             Backend
           </button>
           <button
-            onClick={() => setActiveCategory("devops")}
+            onClick={() => handleCategoryChange("devops")}
             className={`px-4 py-2 rounded-md transition-colors ${
               activeCategory === "devops"
                 ? "bg-cyan-500/20 text-cyan-400 border border-cyan-500/50"
